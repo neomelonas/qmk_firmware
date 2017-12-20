@@ -4,6 +4,7 @@
 enum {
     _BL = 0,
     _AL1,
+    _AL2,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
