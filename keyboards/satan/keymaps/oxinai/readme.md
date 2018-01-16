@@ -1,1 +1,1 @@
-# default Satan GH60 layout
+# oxinai's 5 degree Satan GH60 layout

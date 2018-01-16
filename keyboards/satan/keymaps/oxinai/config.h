@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../../config.h"
 
-/* Tap Dance */
-#define TAPPING_TERM 200
+/* Tap Dance 
+#define TAPPING_TERM 200*/
 #define GRAVE_ESC_ALT_OVERRIDE
 #endif

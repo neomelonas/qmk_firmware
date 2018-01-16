@@ -16,50 +16,6 @@
 #define FN_CAPS LT(_FL, KC_CAPSLOCK)
 
 
-//**Tap Dance Configs**//
-enum {
-  CAP_TAP     = 0,
-  SINGLE_TAP  = 1,
-  SINGLE_HOLD = 2
-};
-typedef struct {
-  bool is_press_action;
-  int state;
-} tap;
-
-int cur_dance (qk_tap_dance_state_t *state) {
-  if (state->count == 1) {
-    //If count = 1, and it has been interrupted - it doesn't matter if it is pressed or not: Send SINGLE_TAP
-    if (state->interrupted || state->pressed==0) return SINGLE_TAP;
-    else return SINGLE_HOLD;
-  }
-  else return 3;
-}
-
-static tap xtap_state = {
-  .is_press_action = true,
-  .state = 0
-};
-
-void x_finished (qk_tap_dance_state_t *state, void *user_data) {
-  xtap_state.state = cur_dance(state);
-  switch (xtap_state.state) {
-    case SINGLE_TAP: register_code(KC_CAPS); break;
-    case SINGLE_HOLD: layer_on(_FL);
-  }
-}
-void x_reset (qk_tap_dance_state_t *state, void *user_data) {
-  switch (xtap_state.state) {
-    case SINGLE_TAP: unregister_code(KC_CAPS); break;
-    case SINGLE_HOLD: layer_off(_FL); break;
-  }
-  xtap_state.state = 0;
-}
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [CAP_TAP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap _BL: (Base Layer) Default Layer
    * ,-----------------------------------------------------------.
