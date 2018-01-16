@@ -18,11 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef CONFIG_H
 #define CONFIG_H
 
-/*#include "../../config.h"*/
-#include "config_common.h"
-
-#define MANUFACTURER oxinai pescamoose
-#define PRODUCT 5 degree GH60-Satan
+#include "../../config.h"
 
 /* Tap Dance 
 #define TAPPING_TERM 200*/
