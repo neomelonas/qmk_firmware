@@ -43,9 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Keymap _FL: Function Layer
    * ,-----------------------------------------------------------.
-   * | ` |F1 |F2 |F3 |F4 |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|  Del  |
+   * |   |F1 |F2 |F3 |F4 |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|  RESET|
    * |-----------------------------------------------------------|
-   * |     |PUp| Up|PDn|Hom|Ins|   |   |   |   |   |   |   |RESET|
+   * |     |PUp| Up|PDn|Hom|Ins|   |   |   |   |   |   |   |     |
    * |-----------------------------------------------------------|
    * |      |Lft|Dn |Rgt|End|Del|Lft|Dn | Up|Rgt|   |   |        |
    * |-----------------------------------------------------------|
@@ -59,6 +59,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,KC_PGUP,KC_UP, KC_PGDN,KC_HOME,KC_INS,_______,_______,_______,_______,_______,_______,_______,RESET, \
   _______,KC_LEFT,KC_DOWN,KC_RGHT,KC_END,KC_DEL,KC_LEFT,KC_DOWN,KC_UP,KC_RIGHT,_______,_______,_______, \
   _______,KC_MUTE,KC_VOLD,KC_VOLU,BL_TOGG,BL_STEP,_______,_______,KC_MPLY,MAC_PREV,MAC_NXT,_______, \
-  _______,_______,_______,                _______,                        _______,_______,DF(0),_______),
+  _______,_______,_______,                _______,                        _______,_______,LT(_BL,_BL),_______),
 };
 
