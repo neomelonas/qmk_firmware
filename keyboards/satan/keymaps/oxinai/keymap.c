@@ -59,6 +59,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,KC_PGUP,KC_UP, KC_PGDN,KC_HOME,KC_INS,_______,_______,_______,_______,_______,_______,_______,RESET, \
   _______,KC_LEFT,KC_DOWN,KC_RGHT,KC_END,KC_DEL,KC_LEFT,KC_DOWN,KC_UP,KC_RIGHT,_______,_______,_______, \
   _______,KC_MUTE,KC_VOLD,KC_VOLU,BL_TOGG,BL_STEP,_______,_______,KC_MPLY,MAC_PREV,MAC_NXT,_______, \
-  _______,_______,_______,                _______,                        _______,_______,DF(_BL),_______),
+  _______,_______,_______,                _______,                        _______,_______,DF(0),_______),
 };
 
