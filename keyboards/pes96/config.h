@@ -124,8 +124,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MAGIC_KEY_DEBUG_MATRIX   X
 //#define MAGIC_KEY_DEBUG_KBD      K
 //#define MAGIC_KEY_DEBUG_MOUSE    M
-#define MAGIC_KEY_VERSION        V
-#define MAGIC_KEY_STATUS         S
+//#define MAGIC_KEY_VERSION        V
+//#define MAGIC_KEY_STATUS         S
 //#define MAGIC_KEY_CONSOLE        C
 //#define MAGIC_KEY_LAYER0_ALT1    ESC
 //#define MAGIC_KEY_LAYER0_ALT2    GRAVE
@@ -143,7 +143,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MAGIC_KEY_LOCK           CAPS
 //#define MAGIC_KEY_EEPROM         E
 //#define MAGIC_KEY_NKRO           N
-#define MAGIC_KEY_SLEEP_LED      Z
+//#define MAGIC_KEY_SLEEP_LED      Z
 
 /*
  * Feature disable options
@@ -151,7 +151,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /* disable debug print */
-#define NO_DEBUG
+//#define NO_DEBUG
 
 /* disable print */
 //#define NO_PRINT
