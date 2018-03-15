@@ -22,11 +22,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x0000
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    oxinai
+#define PRODUCT_ID      0x1212
+#define DEVICE_VER      0x0002
+#define MANUFACTURER    oxinai pescamoose
 #define PRODUCT         pes96
-#define DESCRIPTION     A custom keyboard
+#define DESCRIPTION     A compressed '96' key with 100 keys, handwired.
 
 /* key matrix size */
 #define MATRIX_ROWS 6
