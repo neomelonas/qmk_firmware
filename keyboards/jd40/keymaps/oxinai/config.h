@@ -1,8 +1,10 @@
 #include "../../config.h"
 
-#define BACKLIGHT_BREATHING
 #define AUTO_SHIFT_TIMOUT 150
 #define NO_AUTO_SHIFT_SPECIAL
+#define BACKLIGHT_PIN B7
+#define BACKLIGHT_LEVELS 3
+#define BACKLIGHT_BREATHING
 
 
 #define KEYMAP_OXINAI( \
