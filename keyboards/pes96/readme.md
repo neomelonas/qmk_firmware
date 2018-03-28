@@ -1,10 +1,10 @@
 # pes96
 
-![pes96](imgur.com image replace me!)
+![pes96](https://i.imgur.com/BdB0tAU.jpg)
 
 A short description of the keyboard/project
 
-Keyboard Maintainer: [You](https://github.com/yourusername)  
+Keyboard Maintainer: [You](https://github.com/neomelonas)  
 Hardware Supported: The PCBs, controllers supported  
 Hardware Availability: links to where you can find this hardware
 
