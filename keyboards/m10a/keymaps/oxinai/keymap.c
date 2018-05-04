@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  |L5 |  _L9  |  |L6 |  _L9  |  |L7 |  _L9  |  |L8 |  _L9  |  |L9 |       |
  *  *-----------*  *-----------*  *-----------*  *-----------*  *-----------*
  */
-    [_L0] = {{KC_MPLY, KC_MPRV, KC_MNXT}, {KC_MUTE, KC_VOLD, KC_VOLU}, {KC_MSTP, KC_MFFD, KC_MRWD}, {XXXXXXX, XXXXXXX, MO(_L9)}},
+    [_L0] = {{KC_MPLY, KC_MPRV, KC_MNXT}, {KC_MUTE, KC_VOLD, KC_VOLU}, {LCTL(KC_X), LCTL(KC_C), LCTL(KC_V)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L1] = {{KC_PPLS, KC_PMNS, KC_PAST}, {KC_PSLS, KC_PERC, KC_COMM}, {KC_PDOT, KC_EQL,  KC_PENT}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L2] = {{KC_CIRC, KC_AMPR, KC_EXLM}, {S(KC_D), S(KC_E), S(KC_F)}, {S(KC_A), S(KC_B), S(KC_C)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L3] = {{KC_VOLU, F(0),    KC_WFWD}, {KC_MUTE, M(1),    M(0)   }, {KC_VOLD, KC_MYCM, KC_WBAK}, {XXXXXXX, XXXXXXX, MO(_L9)}},
