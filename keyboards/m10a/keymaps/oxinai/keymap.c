@@ -22,6 +22,12 @@ enum m10a_keycodes {
     DYNAMIC_MACRO_RANGE = SAFE_RANGE,
 };
 
+enum {
+    TD_co = 0,
+    TD_xo,
+    TD_ps
+};
+
 #include "dynamic_macro.h"
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
@@ -54,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  |L5 |  _L9  |  |L6 |  _L9  |  |L7 |  _L9  |  |L8 |  _L9  |  |L9 |       |
  *  *-----------*  *-----------*  *-----------*  *-----------*  *-----------*
  */
-    [_L0] = {{KC_MPLY, KC_MPRV, KC_MNXT}, {KC_MUTE, KC_VOLD, KC_VOLU}, {LCTL(KC_X), LCTL(KC_C), LCTL(KC_V)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
+    [_L0] = {{KC_MPLY, KC_MPRV, KC_MNXT}, {KC_MUTE, KC_VOLD, KC_VOLU}, {TD(TD_xo), TD(TD_co), TD(TD_ps)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L1] = {{KC_PPLS, KC_PMNS, KC_PAST}, {KC_PSLS, KC_PERC, KC_COMM}, {KC_PDOT, KC_EQL,  KC_PENT}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L2] = {{KC_CIRC, KC_AMPR, KC_EXLM}, {S(KC_D), S(KC_E), S(KC_F)}, {S(KC_A), S(KC_B), S(KC_C)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L3] = {{KC_VOLU, F(0),    KC_WFWD}, {KC_MUTE, M(1),    M(0)   }, {KC_VOLD, KC_MYCM, KC_WBAK}, {XXXXXXX, XXXXXXX, MO(_L9)}},
@@ -64,6 +70,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_L7] = {{KC_DMP1, _______, KC_DMP2}, {_______, KC_DMRS, _______}, {KC_DMR1, _______, KC_DMR2}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L8] = {{_______, _______, RESET  }, {_______, _______, _______}, {_______, _______, _______}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L9] = {{DF(_L6), DF(_L7), DF(_L8)}, {DF(_L3), DF(_L4), DF(_L5)}, {DF(_L0), DF(_L1), DF(_L2)}, {XXXXXXX, XXXXXXX, _______}},
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Enable Dynamic Macros.
+    if (!process_record_dynamic_macro(keycode, record)) {
+        return false;
+    }
+    return true;
+};
+
+void cpy(qk_tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1:
+            register_code(KC_LCTL); register_code(KC_C); unregister_code(KC_LCTL); unregister_code(KC_C);
+            break;
+        case 2:
+            register_code(KC_LGUI); register_code(KC_C); unregister_code(KC_LGUI); unregister_code(KC_C);
+            break;
+    }
+};
+
+void pst(qk_tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1:
+            register_code(KC_LCTL); register_code(KC_V); unregister_code(KC_LCTL); unregister_code(KC_V);
+            break;
+        case 2:
+            register_code(KC_LGUI); register_code(KC_V); unregister_code(KC_LGUI); unregister_code(KC_V);
+            break;
+    }
+};
+
+void ctt(qk_tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1:
+            register_code(KC_LCTL); register_code(KC_X); unregister_code(KC_LCTL); unregister_code(KC_X);
+            break;
+        case 2:
+            register_code(KC_LGUI); register_code(KC_X); unregister_code(KC_LGUI); unregister_code(KC_X);
+            break;
+    }
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [TD_co]  = ACTION_TAP_DANCE_FN(cpy),
+    [TD_xo]  = ACTION_TAP_DANCE_FN(ctt),
+    [TD_ps]  = ACTION_TAP_DANCE_FN(pst),
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -150,12 +203,4 @@ void matrix_scan_user(void) {
                 break;
         }
     }
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // Enable Dynamic Macros.
-    if (!process_record_dynamic_macro(keycode, record)) {
-        return false;
-    }
-    return true;
 }
