@@ -27,4 +27,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Tap Dance */
 #define TAPPING_TERM 200
 #define GRAVE_ESC_ALT_OVERRIDE
+#define PREVENT_STUCK_MODIFIERS
+#define IGNORE_MOD_TAP_INTERRUPT
 #endif
