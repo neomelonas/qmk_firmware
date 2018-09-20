@@ -4,5 +4,5 @@
 #include "../../config.h"
 #undef PRODUCT
 #define PRODUCT IBM Model M122 Terminal Keyboard [Battleship]
-#define RETRO_TAPPING
+//#define RETRO_TAPPING
 #endif
