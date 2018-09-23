@@ -59,7 +59,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  |-----------|  |-----------|  |-----------|  |-----------|  |-----------|
  *  |L5 |  _L9  |  |L6 |  _L9  |  |L7 |  _L9  |  |L8 |  _L9  |  |L9 |       |
  *  *-----------*  *-----------*  *-----------*  *-----------*  *-----------*
- */
+ * L9: MASTER CONTROL        
+ * L0: Media & CopyPasteos   
+ * L1: Numpad Symbols        
+ * L2: ... Maybe HexPad?     
+ * L3: Volume & Misc?        
+ * L4: NumPad                
+ * L5: Nav Cluster & Ins/Del 
+ * L6: Nothing               
+ * L7: Dynamic Macros        
+ * L8: RESET Top Right     */
     [_L0] = {{KC_MPLY, KC_MPRV, KC_MNXT}, {KC_MUTE, KC_VOLD, KC_VOLU}, {TD(TD_xo), TD(TD_co), TD(TD_ps)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L1] = {{KC_PPLS, KC_PMNS, KC_PAST}, {KC_PSLS, KC_PERC, KC_COMM}, {KC_PDOT, KC_EQL,  KC_PENT}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L2] = {{KC_CIRC, KC_AMPR, KC_EXLM}, {S(KC_D), S(KC_E), S(KC_F)}, {S(KC_A), S(KC_B), S(KC_C)}, {XXXXXXX, XXXXXXX, MO(_L9)}},

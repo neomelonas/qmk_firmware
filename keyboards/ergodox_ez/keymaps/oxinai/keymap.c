@@ -11,7 +11,7 @@
 #define KC_ATM LGUI(LSFT(KC_P))
 #define KC_ATP LGUI(LCTL(KC_P))
 #define TO_NORM TO(VIM)
-
+#define FN_BKSP LT(SYMB, KC_BSPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_EQL,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_LEFT,
-        KC_TAB,        KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TG(SYMB),
-        KC_BSPC,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
+        KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TG(SYMB),
+        FN_BKSP,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   ALL_T(KC_NO),
         LT(SYMB,KC_GRV),KC_QUOT,      LALT(KC_LSFT),  KC_LEFT,KC_RGHT,
                                               ALT_T(KC_APP),  KC_LGUI,
@@ -49,11 +49,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_SPC,KC_BSPC,KC_END,
         // right hand
              KC_RGHT,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,               KC_BSPC,
-             TG(VIM),       KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,             KC_BSLS,
+             TG(MDIA),       KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,             KC_BSLS,
                           KC_H,   KC_J,   KC_K,   KC_L,   LT(MDIA, KC_SCLN),KC_LGUI,
              MEH_T(KC_NO),KC_N,   KC_M,   KC_COMM,KC_DOT, CTL_T(KC_SLSH),   KC_RSFT,
                                   KC_UP,  KC_DOWN,KC_LBRC,KC_RBRC,          LT(SYMB, KC_MINS),
-             ALT_T(KC_ESC),        KC_LCTL,
+             KC_GESC,KC_LCTL,
              KC_PGUP,
              KC_PGDN,KC_DELT, KC_ENT
     ),
@@ -82,9 +82,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = LAYOUT_ergodox(
        // left hand
        KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
-       KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
-       KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
+       KC_TRNS,KC_PGUP,KC_UP,  KC_PGDN,KC_HOME,KC_INS, KC_TRNS,
+       KC_TRNS,KC_LEFT,KC_DOWN,KC_RGHT,KC_END, KC_DEL,
+       KC_TRNS,KC_MPLY,KC_MPRV,KC_MNXT,KC_RBRC,KC_TILD,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |  M4  |  M5  |------|       |------|      |Back  |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
- */
+ 
 // MEDIA AND MOUSE
 [MDIA] = LAYOUT_ergodox(
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -139,8 +139,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_WBAK
-),
- /* Normal mode
+), */
+/* Normal mode
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -179,6 +179,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
                               X_____X,VIM_Y  ,VIM_U  ,VIM_I  ,VIM_O  ,VIM_P  ,X_____X,
                                       VIM_H  ,VIM_J  ,VIM_K  ,VIM_L  ,X_____X,X_____X,
+                              X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,KC_LSFT,
+                                              X_____X,X_____X,X_____X,KC_RALT,KC_RCTL,
+
+    KC_PGUP,  KC_PGDN,
+    TO(SYMB),
+    KC_DEL , KC_ENT, GUI_T(KC_BSPC)
+
+),
+[MDIA] = LAYOUT_ergodox(
+    // Layer 2 Left Hand
+    X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
+    KC_TAB ,LSFT(LALT(KC_A)),X_____X,LSFT(LALT(KC_D)),X_____X,X_____X,X_____X,
+    X_____X, LCTL(KC_LEFT),X_____X,LCTL(KC_RGHT),X_____X,X_____X,
+    KC_LSFT,LSFT(LGUI(KC_A)),X_____X,LSFT(LGUI(KC_D)),X_____X,X_____X,X_____X,
+    KC_LCTL,KC_LALT,X_____X,X_____X,X_____X,
+
+                                            KC_HOME,KC_END ,
+                                            TO(SYMB),
+                                            GUI_T(KC_SPC),  KC_ESC ,_______,
+
+
+    // Layer 2 Right Hand
+                              X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
+                              X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
+                                      X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
                               X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,KC_LSFT,
                                               X_____X,X_____X,X_____X,KC_RALT,KC_RCTL,
 
