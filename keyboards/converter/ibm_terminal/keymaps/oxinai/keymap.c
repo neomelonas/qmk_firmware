@@ -28,6 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define XXXXXXX KC_NO
 #define FN_CAPS LT(MMS, KC_CAPS)
 #define CTRLENT MT(MOD_RCTL, KC_ENT)
+
 enum layers {
   QWE, // qwerty
   COL, // colemak
@@ -133,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Standard 60% arrow layer, for muscle memory reasons. */
     [MMS] = KEYMAP(
-                                   KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_PSCR, KC_SLCK, KC_PAUS,
+                                   KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,
 
     _______, _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
@@ -204,6 +205,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
 
+    /* MACROS */
     case LOCKIT:
       SEND_STRING(SS_LCTRL(SS_LGUI("q")));
       return false;

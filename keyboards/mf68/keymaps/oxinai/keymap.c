@@ -4,8 +4,9 @@
 #define _FN1 1
 #define _FN2 2
 #define KC_ KC_TRNS
+#define KC_BONK RESET
 #define KC_X0 LT(_FN1, KC_CAPS)
-#define KC_X1 MO(_FN2)
+#define KC_X1 LT(_FN1, KC_APP)
 #define KC_X2 BL_STEP
 #define KC_X3 BL_BRTG
 #define KC_X4 BL_TOGG
@@ -25,13 +26,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  /*|-------`----`----`----`----`----`----`----`----`----`----`----`----------|  ,----. */
     LSFT     , Z  , X  , C  , V  , B  , N  , M  ,COMM,DOT ,SLSH,       RSFT  ,    UP ,
  /*|---------`----`----`----`----`----`----`----`----`----`----`-------------.--|----|----. */
-    LCTL ,LGUI ,LALT ,            SPACE             ,  X1  ,RALT ,RCTL ,    LEFT,DOWN,RGHT
+    LCTL ,LGUI ,LALT ,            SPACE             ,RALT  , X1  ,RCTL ,    LEFT,DOWN,RGHT
  /*`-----+-----+-----+------------------------------+------+-----+-----'   `----+----+----' */
   ),
 
   [_FN1] = LAYOUT_kc(
  /*,----+----+----+----+----+----+----+----+----+----+----+----+----+--------.  ,----+----. */
-    GRV , F1 , F2 , F3 , F4 , F5 , F6 , F7 , F8 , F9 ,F10 ,F11 ,F12 ,   BSPC ,       ,HOME,
+    GRV , F1 , F2 , F3 , F4 , F5 , F6 , F7 , F8 , F9 ,F10 ,F11 ,F12 ,  BONK  ,       ,HOME,
  /*|esc-`-1--`-2--`-3--`-4--`-5--`-6--`-7--`-8--`-9--`-0--`mnus`plus`--bksp--|  |ins-`pgup| */
           ,PGUP, UP ,PGDN,HOME, INS,    ,    ,    ,PSCR,SLCK,PAUS, X2 ,      ,       ,END,
  /*|tab---`-q--`-w--`-e--`-r--`-t--`-y--`-u--`-i--`-o--`-p--`-{--`-}--`--|---|  `del-`pgdn' */
@@ -41,21 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  /*|shift----`-z--`-x--`-c--`-v--`-b--`-n--`-m--`-,--`-.--`-/--`-------shift-.--|-up-|----. */
          ,     ,     ,                              ,      ,     ,     ,     X3 , X6 , X4
  /*`ctrl-+-gui-+-alt-+----------space---------------+-fn---+-alt-+ctrl-'   `left+down+rght' */
-  ),
-
-  [_FN2] = LAYOUT_kc(
- /*,----+----+----+----+----+----+----+----+----+----+----+----+----+--------.  ,----+----. */
-    GRV , F1 , F2 , F3 , F4 , F5 , F6 , F7 , F8 , F9 ,F10 ,F11 ,F12 ,   BSPC ,   VOLU,HOME,
- /*|esc-`-1--`-2--`-3--`-4--`-5--`-6--`-7--`-8--`-9--`-0--`mnus`plus`--bksp--|  |ins-`pgup| */
-          ,    ,    , UP ,    ,    ,    , 7  , 8  , 9  ,    ,    ,    ,      ,   VOLD,END,
- /*|tab---`-q--`-w--`-e--`-r--`-t--`-y--`-u--`-i--`-o--`-p--`-{--`-}--`--|---|  `del-`pgdn' */
-           ,    ,LEFT,DOWN,RGHT,    ,    , 4  , 5  , 6  ,    ,    ,          ,
- /*|caps---`-a--`-s--`-d--`-f--`-g--`-h--`-j--`-k--`-l--`-;--`-'--`----enter-|  ,----. */
-             ,    ,    ,    ,    ,    , 0  , 1  , 2  , 3  ,    ,             ,   MUTE,
- /*|shift----`-z--`-x--`-c--`-v--`-b--`-n--`-m--`-,--`-.--`-/--`-------shift-.--|-up-|----. */
-         ,     ,     ,                              ,      ,     ,     ,    MPRV,MPLY,MNXT
- /*`ctrl-+-gui-+-alt-+----------space---------------+-fn---+-alt-+ctrl-'   `left+down+rght' */
-  )
+ )
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
