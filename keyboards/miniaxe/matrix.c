@@ -1,5 +1,5 @@
 /*
-Copyright 2017 Danny Nguyen <danny@keeb.io>
+Copyright 2012 Jun Wako <wakojun@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,13 +30,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "pro_micro.h"
 #include "config.h"
 #include "timer.h"
+#include "split_flags.h"
 
-#ifdef BACKLIGHT_ENABLE 
-    #include "backlight.h"
+#ifdef RGBLIGHT_ENABLE
+#   include "rgblight.h"
+#endif
+#ifdef BACKLIGHT_ENABLE
+#   include "backlight.h"
     extern backlight_config_t backlight_config;
 #endif
 
-#ifdef USE_I2C
+#if defined(USE_I2C) || defined(EH)
 #  include "i2c.h"
 #else // USE_SERIAL
 #  include "serial.h"
@@ -63,14 +67,16 @@ static matrix_row_t matrix_debouncing[MATRIX_ROWS];
 
 #define ERROR_DISCONNECT_COUNT 5
 
-#define SERIAL_LED_ADDR 0x00
-
 #define ROWS_PER_HAND (MATRIX_ROWS/2)
 
 static uint8_t error_count = 0;
 
-static const uint8_t row_pins[MATRIX_ROWS] = MATRIX_ROW_PINS;
-static const uint8_t col_pins[MATRIX_COLS] = MATRIX_COL_PINS;
+#if ((DIODE_DIRECTION == COL2ROW) || (DIODE_DIRECTION == ROW2COL))
+static uint8_t row_pins[MATRIX_ROWS] = MATRIX_ROW_PINS;
+static uint8_t col_pins[MATRIX_COLS] = MATRIX_COL_PINS;
+#elif (DIODE_DIRECTION == CUSTOM_MATRIX)
+static uint8_t row_col_pins[MATRIX_ROWS][MATRIX_COLS] = MATRIX_ROW_COL_PINS;
+#endif
 
 /* matrix state(1:on, 0:off) */
 static matrix_row_t matrix[MATRIX_ROWS];
@@ -88,6 +94,9 @@ static matrix_row_t matrix_debouncing[MATRIX_ROWS];
     static void unselect_cols(void);
     static void unselect_col(uint8_t col);
     static void select_col(uint8_t col);
+#elif (DIODE_DIRECTION == CUSTOM_MATRIX)
+    static void init_cols_rows(void);
+    static bool read_cols(matrix_row_t current_matrix[], uint8_t current_row);
 #endif
 
 __attribute__ ((weak))
@@ -108,6 +117,10 @@ __attribute__ ((weak))
 void matrix_scan_user(void) {
 }
 
+__attribute__ ((weak))
+void matrix_slave_scan_user(void) {
+}
+
 inline
 uint8_t matrix_rows(void)
 {
@@ -123,14 +136,29 @@ uint8_t matrix_cols(void)
 void matrix_init(void)
 {
 #ifdef DISABLE_JTAG
-    // JTAG disable for PORT F. write JTD bit twice within four cycles.
-    MCUCR |= (1<<JTD);
-    MCUCR |= (1<<JTD);
+  // JTAG disable for PORT F. write JTD bit twice within four cycles.
+  MCUCR |= (1<<JTD);
+  MCUCR |= (1<<JTD);
 #endif
-  
+
     debug_enable = true;
     debug_matrix = true;
     debug_mouse = true;
+
+    // Set pinout for right half if pinout for that half is defined
+    if (!isLeftHand) {
+#ifdef MATRIX_ROW_PINS_RIGHT
+        const uint8_t row_pins_right[MATRIX_ROWS] = MATRIX_ROW_PINS_RIGHT;
+        for (uint8_t i = 0; i < MATRIX_ROWS; i++)
+            row_pins[i] = row_pins_right[i];
+#endif
+#ifdef MATRIX_COL_PINS_RIGHT
+        const uint8_t col_pins_right[MATRIX_COLS] = MATRIX_COL_PINS_RIGHT;
+        for (uint8_t i = 0; i < MATRIX_COLS; i++)
+            col_pins[i] = col_pins_right[i];
+#endif
+    }
+
     // initialize row and col
 #if (DIODE_DIRECTION == COL2ROW)
     unselect_rows();
@@ -138,18 +166,18 @@ void matrix_init(void)
 #elif (DIODE_DIRECTION == ROW2COL)
     unselect_cols();
     init_rows();
+#elif (DIODE_DIRECTION == CUSTOM_MATRIX)
+    init_cols_rows();
 #endif
-
-    TX_RX_LED_INIT;
 
     // initialize matrix state: all keys off
     for (uint8_t i=0; i < MATRIX_ROWS; i++) {
         matrix[i] = 0;
         matrix_debouncing[i] = 0;
     }
-
+    
     matrix_init_quantum();
-
+    
 }
 
 uint8_t _matrix_scan(void)
@@ -186,6 +214,20 @@ uint8_t _matrix_scan(void)
 #       endif
 
     }
+
+#elif (DIODE_DIRECTION == CUSTOM_MATRIX)
+    // Set row, read cols
+    for (uint8_t current_row = 0; current_row < ROWS_PER_HAND; current_row++) {
+#       if (DEBOUNCING_DELAY > 0)
+            bool matrix_changed = read_cols(matrix_debouncing+offset, current_row);
+            if (matrix_changed) {
+                debouncing = true;
+                debouncing_time = timer_read();
+            }
+#       else
+            read_cols(matrix+offset, current_row);
+#       endif
+    }
 #endif
 
 #   if (DEBOUNCING_DELAY > 0)
@@ -200,26 +242,35 @@ uint8_t _matrix_scan(void)
     return 1;
 }
 
-#ifdef USE_I2C
+#if defined(USE_I2C) || defined(EH)
 
 // Get rows from other half over i2c
 int i2c_transaction(void) {
     int slaveOffset = (isLeftHand) ? (ROWS_PER_HAND) : 0;
+    int err = 0;
+    
+    // write backlight info
+    #ifdef BACKLIGHT_ENABLE
+        if (BACKLIT_DIRTY) {
+            err = i2c_master_start(SLAVE_I2C_ADDRESS + I2C_WRITE);
+            if (err) goto i2c_error;
+            
+            // Backlight location
+            err = i2c_master_write(I2C_BACKLIT_START);
+            if (err) goto i2c_error;
+            
+            // Write backlight 
+            i2c_master_write(get_backlight_level());
+            
+            BACKLIT_DIRTY = false;
+        }
+    #endif
 
-    int err = i2c_master_start(SLAVE_I2C_ADDRESS + I2C_WRITE);
+    err = i2c_master_start(SLAVE_I2C_ADDRESS + I2C_WRITE);
     if (err) goto i2c_error;
 
-    // start of matrix stored at 0x00
-    err = i2c_master_write(0x00);
-    if (err) goto i2c_error;
-
-#ifdef BACKLIGHT_ENABLE
-    // Write backlight level for slave to read
-    err = i2c_master_write(backlight_config.enable ? backlight_config.level : 0);
-#else
-    // Write zero, so our byte index is the same
-    err = i2c_master_write(0x00);
-#endif
+    // start of matrix stored at I2C_KEYMAP_START
+    err = i2c_master_write(I2C_KEYMAP_START);
     if (err) goto i2c_error;
 
     // Start read
@@ -238,6 +289,26 @@ i2c_error: // the cable is disconnceted, or something else went wrong
         i2c_reset_state();
         return err;
     }
+    
+    #ifdef RGBLIGHT_ENABLE
+        if (RGB_DIRTY) {
+            err = i2c_master_start(SLAVE_I2C_ADDRESS + I2C_WRITE);
+            if (err) goto i2c_error;
+            
+            // RGB Location
+            err = i2c_master_write(I2C_RGB_START);
+            if (err) goto i2c_error;
+            
+            uint32_t dword = eeconfig_read_rgblight();
+            
+            // Write RGB
+            err = i2c_master_write_data(&dword, 4);
+            if (err) goto i2c_error;
+            
+            RGB_DIRTY = false;
+            i2c_master_stop();
+        }
+    #endif
 
     return 0;
 }
@@ -254,11 +325,16 @@ int serial_transaction(void) {
     for (int i = 0; i < ROWS_PER_HAND; ++i) {
         matrix[slaveOffset+i] = serial_slave_buffer[i];
     }
+    
+    #ifdef RGBLIGHT_ENABLE
+        // Code to send RGB over serial goes here (not implemented yet)
+    #endif
+    
+    #ifdef BACKLIGHT_ENABLE
+        // Write backlight level for slave to read
+        serial_master_buffer[SERIAL_BACKLIT_START] = backlight_config.enable ? backlight_config.level : 0;
+    #endif
 
-#ifdef BACKLIGHT_ENABLE
-    // Write backlight level for slave to read
-    serial_master_buffer[SERIAL_LED_ADDR] = backlight_config.enable ? backlight_config.level : 0;
-#endif
     return 0;
 }
 #endif
@@ -267,13 +343,11 @@ uint8_t matrix_scan(void)
 {
     uint8_t ret = _matrix_scan();
 
-#ifdef USE_I2C
+#if defined(USE_I2C) || defined(EH)
     if( i2c_transaction() ) {
 #else // USE_SERIAL
     if( serial_transaction() ) {
 #endif
-        // turn on the indicator led when halves are disconnected
-        TXLED1;
 
         error_count++;
 
@@ -285,8 +359,6 @@ uint8_t matrix_scan(void)
             }
         }
     } else {
-        // turn off the indicator led on no error
-        TXLED0;
         error_count = 0;
     }
     matrix_scan_quantum();
@@ -298,31 +370,21 @@ void matrix_slave_scan(void) {
 
     int offset = (isLeftHand) ? 0 : ROWS_PER_HAND;
 
-#ifdef USE_I2C
-#ifdef BACKLIGHT_ENABLE
-    // Read backlight level sent from master and update level on slave
-    backlight_set(i2c_slave_buffer[0]);
-#endif
+#if defined(USE_I2C) || defined(EH)
     for (int i = 0; i < ROWS_PER_HAND; ++i) {
-        i2c_slave_buffer[i+1] = matrix[offset+i];
-    }
+        i2c_slave_buffer[I2C_KEYMAP_START+i] = matrix[offset+i];
+    }   
 #else // USE_SERIAL
     for (int i = 0; i < ROWS_PER_HAND; ++i) {
         serial_slave_buffer[i] = matrix[offset+i];
     }
-
-#ifdef BACKLIGHT_ENABLE
-    // Read backlight level sent from master and update level on slave
-    backlight_set(serial_master_buffer[SERIAL_LED_ADDR]);
 #endif
-#endif
+    matrix_slave_scan_user();
 }
 
 bool matrix_is_modified(void)
 {
-#if (DEBOUNCING_DELAY > 0)
     if (debouncing) return false;
-#endif
     return true;
 }
 
@@ -492,6 +554,43 @@ static void unselect_cols(void)
         _SFR_IO8((pin >> 4) + 1) &= ~_BV(pin & 0xF); // IN
         _SFR_IO8((pin >> 4) + 2) |=  _BV(pin & 0xF); // HI
     }
+}
+
+#elif (DIODE_DIRECTION == CUSTOM_MATRIX)
+
+static void init_cols_rows(void)
+{
+    for(int row = 0; row < MATRIX_ROWS; row++) {
+        for(int col = 0; col < MATRIX_COLS; col++) {
+            uint8_t pin = row_col_pins[row][col];
+            if(pin == NO_PIN) {
+                continue;
+            }
+            // DDxn set 0 for input
+            _SFR_IO8((pin >> 4) + 1) &=  ~_BV(pin & 0xF);
+            // PORTxn set 1 for input/pullup
+            _SFR_IO8((pin >> 4) + 2) |= _BV(pin & 0xF);
+        }
+    }
+}
+
+static bool read_cols(matrix_row_t current_matrix[], uint8_t current_row)
+{
+    matrix_row_t last_row_value = current_matrix[current_row];
+    current_matrix[current_row] = 0;
+
+    for(uint8_t col_index = 0; col_index < MATRIX_COLS; col_index++) {
+        uint8_t pin = row_col_pins[current_row][col_index];
+        if(pin == NO_PIN) {
+            current_matrix[current_row] |= 0;
+        }
+        else {
+            uint8_t pin_state = (_SFR_IO8(pin >> 4) & _BV(pin & 0xF));
+            current_matrix[current_row] |= pin_state ? 0 : (ROW_SHIFTER << col_index);
+        }
+    }
+
+    return (last_row_value != current_matrix[current_row]);
 }
 
 #endif
