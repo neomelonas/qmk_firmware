@@ -43,7 +43,7 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   Atmel DFU loader 4096
 #   LUFA bootloader  4096
 #   USBaspLoader     2048
-OPT_DEFS += -DBOOTLOADER_SIZE=4096
+#OPT_DEFS += -DBOOTLOADER_SIZE=4096
 
 # Build Options
 #   change to "no" to disable the options, or define them in the Makefile in 
@@ -61,7 +61,7 @@ AUDIO_ENABLE = no           # Audio output on port C6
 UNICODE_ENABLE = no         # Unicode
 UNICODEMAP_ENABLE = yes
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.  Do not enable this with audio at the same time.
+RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight. 
 PS2_USE_USART = yes
 API_SYSEX_ENABLE = n
 CUSTOM_MATRIX = yes
