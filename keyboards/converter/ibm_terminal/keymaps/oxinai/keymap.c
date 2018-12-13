@@ -57,12 +57,14 @@ enum keycodes {
 
   // macros
   LOCKIT,
+  DYNAMIC_MACRO_RANGE,
 };
+#include "dynamic_macro.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* qwerty */
-    [QWE] = KEYMAP(
-                                   KC_MUTE, KC_VOLD, KC_VOLU, _______, KC_MPLY, KC_MPRV, KC_MNXT, KC_WAKE, _______, KC_PSCR, KC_SLCK, KC_PAUS,
+    [QWE] = LAYOUT(
+                                   DYN_MACRO_PLAY1, KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, KC_WAKE, _______, KC_PSCR, KC_SLCK, KC_PAUS,
                                    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
 
     LOCKIT,  MO(SYS),     KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  XXXXXXX, KC_BSPC,     KC_INS,  KC_HOME, KC_PGUP,     KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
@@ -73,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* colemak */
-    [COL] = KEYMAP(
+    [COL] = LAYOUT(
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
@@ -85,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* workman */
-    [WOR] = KEYMAP(
+    [WOR] = LAYOUT(
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
@@ -97,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* dvorak */
-    [DVO] = KEYMAP(
+    [DVO] = LAYOUT(
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
@@ -109,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* system */
-    [SYS] = KEYMAP(
+    [SYS] = LAYOUT(
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
@@ -121,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* mouse keys */
-    [MOU] = KEYMAP(
+    [MOU] = LAYOUT(
                                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
@@ -133,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* Standard 60% arrow layer, for muscle memory reasons. */
-    [MMS] = KEYMAP(
+    [MMS] = LAYOUT(
                                    KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,
 
@@ -141,11 +143,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,     _______, KC_PGUP, KC_UP,   KC_PGDN, KC_HOME, KC_INS,  KC_WH_U, _______, _______, _______, _______, _______, _______,          _______,     _______, _______, _______,     _______, _______, _______, _______,
     _______, _______,     _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_DEL,  KC_WH_D, _______, _______, _______, _______, _______,          _______, _______,              _______,              _______, _______, _______, _______,
     _______, _______,     _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
-    _______, _______,     _______,          _______,                            _______,                                              _______,          _______,              _______,              _______, _______, _______, _______
+    DYN_REC_STOP, DYN_REC_START1, _______,          _______,                            _______,                                              _______,          _______,              _______,              _______, _______, _______, _______
     ),
 
 /*
-    [XXX] = KEYMAP(
+    [XXX] = LAYOUT(
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
@@ -164,6 +166,9 @@ void persistent_default_layer_set(uint16_t default_layer) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_record_dynamic_macro(keycode, record)) {
+      return false;
+  }
   switch (keycode) {
     /* layout switcher */
     case LAY_QWE:
