@@ -1,4 +1,7 @@
 // Below layout is based upon /u/That-Canadian's planck layout
+#include QMK_KEYBOARD_H
+#include "oxinai.h"
+
 #include "launchpad.h"
 #include "action_layer.h"
 #include "eeconfig.h"
@@ -24,32 +27,6 @@ extern keymap_config_t keymap_config;
 #define CTLTAB LCTL(KC_TAB)
 #define COMTAB LGUI(KC_TAB)
 
-enum custom_keycodes {
-  NEATO = SAFE_RANGE,
-  COOLIO,
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case NEATO:
-      if (record->event.pressed) {
-        // when keycode QMKBEST is pressed
-        SEND_STRING("Neat.");
-      } else {
-        // when keycode QMKBEST is released
-      }
-      break;
-    case COOLIO:
-      if (record->event.pressed) {
-        SEND_STRING("Heck yea, spacecat.design!");
-      }
-      break;
-  }
-  return true;
-};
-
-
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
@@ -65,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = LAYOUT( \
     KC_MUTE, KC_MPLY, \
-    KC_VOLU, KC_MNXT, \
+    KC_VOLD, KC_VOLU, \
     MO(_FUNC), MO(_FUNC),  \
-    KC_VOLD, KC_MPRV \
+    KC_MPRV, KC_MNXT \
 ),
 
 /* Function
@@ -85,11 +62,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LOCKITM,  LOCKITW, \
     COMTAB,   CTLTAB, \
     _______,  _______, \
-    NEATO,    COOLIO \
+    KC_SECRET_2, KC_SECRET_1 \
 )
 
 };
+const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {100, 50, 10}; // Set the last one to 10ms for some speedy swirls
+uint8_t prev = _QWERTY;
+uint32_t desired = 7;
 
 void matrix_init_user(void) {
-    
+    rgblight_mode(desired);
+}
+
+uint32_t layer_state_set_user(uint32_t state) {
+    uint8_t layer = biton32(state);
+    if (prev!=_FUNC) {
+        switch (layer) {
+            case _QWERTY:
+                rgblight_mode(desired);
+                break;
+            case _FUNC:
+                rgblight_mode(1);
+                rgblight_setrgb(0,128,128);
+                break;
+        }
+    } else {
+      desired = rgblight_get_mode();
+  }
+  prev = layer;
+  return state;
 }
