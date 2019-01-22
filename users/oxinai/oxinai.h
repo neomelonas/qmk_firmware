@@ -22,8 +22,6 @@ enum userspace_layers {
   _ADJUST,
 };
 
-
-
 typedef union {
   uint8_t raw;
 } userspace_config_t;

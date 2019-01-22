@@ -1,7 +1,9 @@
-#include "m10a.h"
+#include QMK_KEYBOARD_H
+#include "oxinai.h"
+
 #include "action_layer.h"
 #include "eeconfig.h"
-#include "version.h"
+#include "dynamic_macro.h"
 
 extern keymap_config_t keymap_config;
 
@@ -18,27 +20,9 @@ enum layers {
     _L9
 };
 
-enum m10a_keycodes {
-    DYNAMIC_MACRO_RANGE = SAFE_RANGE,
-};
-
-enum {
-    TD_co = 0,
-    TD_xo,
-    TD_ps
-};
-
-#include "dynamic_macro.h"
-#define _______ KC_TRNS
-#define XXXXXXX KC_NO
 #define FN_ZERO LT(_L9, KC_0)
-#define KC_DMR1 DYN_REC_START1
-#define KC_DMR2 DYN_REC_START2
-#define KC_DMP1 DYN_MACRO_PLAY1
-#define KC_DMP2 DYN_MACRO_PLAY2
-#define KC_DMRS DYN_REC_STOP
 
-static uint8_t current_layer;
+//static uint8_t current_layer;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*  .-----------.  .-----------.  .-----------.  .-----------.  .-----------.
@@ -60,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  |L5 |  _L9  |  |L6 |  _L9  |  |L7 |  _L9  |  |L8 |  _L9  |  |L9 |       |
  *  *-----------*  *-----------*  *-----------*  *-----------*  *-----------*
  * L9: MASTER CONTROL        
- * L0: Media & CopyPasteos   
+ * L0: Media & CopyPasteos,    
  * L1: Numpad Symbols        
  * L2: ... Maybe HexPad?     
  * L3: Volume & Misc?        
@@ -69,10 +53,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * L6: Nothing               
  * L7: Dynamic Macros        
  * L8: RESET Top Right     */
-    [_L0] = {{KC_MPLY, KC_MPRV, KC_MNXT}, {KC_MUTE, KC_VOLD, KC_VOLU}, {TD(TD_xo), TD(TD_co), TD(TD_ps)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
+    [_L0] = {{KC_MPLY, KC_MPRV, KC_MNXT}, {KC_MUTE, KC_VOLD, KC_VOLU}, {XXXXXXX, BL_STEP, XXXXXXX}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L1] = {{KC_PPLS, KC_PMNS, KC_PAST}, {KC_PSLS, KC_PERC, KC_COMM}, {KC_PDOT, KC_EQL,  KC_PENT}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L2] = {{KC_CIRC, KC_AMPR, KC_EXLM}, {S(KC_D), S(KC_E), S(KC_F)}, {S(KC_A), S(KC_B), S(KC_C)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
-    [_L3] = {{KC_VOLU, F(0),    KC_WFWD}, {KC_MUTE, M(1),    M(0)   }, {KC_VOLD, KC_MYCM, KC_WBAK}, {XXXXXXX, XXXXXXX, MO(_L9)}},
+    [_L3] = {{KC_SEC2, UC_M_OS, UC_M_WC}, {UC_FLIP, UC_DISA, UC_SHRG}, {KC_DMP1, KC_DMP2, KC_DMRS}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L4] = {{KC_7,    KC_8,    KC_9   }, {KC_4,    KC_5,    KC_6   }, {KC_1,    KC_2,    KC_3   }, {XXXXXXX, XXXXXXX, FN_ZERO}},
     [_L5] = {{KC_PGDN, KC_UP,   KC_PGUP}, {KC_LEFT, KC_DOWN, KC_RGHT}, {KC_HOME, KC_INS , KC_END }, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L6] = {{_______, _______, _______}, {_______, _______, _______}, {_______, _______, _______}, {XXXXXXX, XXXXXXX, MO(_L9)}},
@@ -80,88 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_L8] = {{_______, _______, RESET  }, {BL_STEP, BL_TOGG, BL_BRTG}, {_______, _______, _______}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L9] = {{DF(_L6), DF(_L7), DF(_L8)}, {DF(_L3), DF(_L4), DF(_L5)}, {DF(_L0), DF(_L1), DF(_L2)}, {XXXXXXX, XXXXXXX, _______}},
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // Enable Dynamic Macros.
-    if (!process_record_dynamic_macro(keycode, record)) {
-        return false;
-    }
-    return true;
-};
-
-void cpy(qk_tap_dance_state_t *state, void *user_data) {
-    switch (state->count) {
-        case 1:
-            register_code(KC_LCTL); register_code(KC_C); unregister_code(KC_LCTL); unregister_code(KC_C);
-            break;
-        case 2:
-            register_code(KC_LGUI); register_code(KC_C); unregister_code(KC_LGUI); unregister_code(KC_C);
-            break;
-    }
-};
-
-void pst(qk_tap_dance_state_t *state, void *user_data) {
-    switch (state->count) {
-        case 1:
-            register_code(KC_LCTL); register_code(KC_V); unregister_code(KC_LCTL); unregister_code(KC_V);
-            break;
-        case 2:
-            register_code(KC_LGUI); register_code(KC_V); unregister_code(KC_LGUI); unregister_code(KC_V);
-            break;
-    }
-};
-
-void ctt(qk_tap_dance_state_t *state, void *user_data) {
-    switch (state->count) {
-        case 1:
-            register_code(KC_LCTL); register_code(KC_X); unregister_code(KC_LCTL); unregister_code(KC_X);
-            break;
-        case 2:
-            register_code(KC_LGUI); register_code(KC_X); unregister_code(KC_LGUI); unregister_code(KC_X);
-            break;
-    }
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_co]  = ACTION_TAP_DANCE_FN(cpy),
-    [TD_xo]  = ACTION_TAP_DANCE_FN(ctt),
-    [TD_ps]  = ACTION_TAP_DANCE_FN(pst),
-};
-
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-    switch(id) {
-        case 0:
-            if (record->event.pressed) {
-                return MACRO(I(10), D(LGUI), T(R), U(LGUI), END);
-            }
-            else {
-                SEND_STRING("chrome.exe\n");
-                return false;
-            }
-        break;
-        case 1:
-            if (record->event.pressed) {
-                return MACRO(I(10), D(LCTL), T(W), U(LCTL), END);
-            }
-        break;
-    }
-    return MACRO_NONE;
-};
-
-const uint16_t PROGMEM fn_actions[] = {
-    [0] = ACTION_FUNCTION(0),
-};
-
-void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
-    switch (id) {
-        case 0:
-            if (record->event.pressed) {
-                SEND_STRING ("[Keyboard: " QMK_KEYBOARD "]  --  [QMK Version: " QMK_VERSION "]  --  [Keymap: " QMK_KEYMAP "]");
-            }
-        break;
-    }
-}
-
+/*
 void matrix_init_user(void) {
   #ifdef BACKLIGHT_ENABLE
     backlight_level(0);
@@ -212,4 +115,4 @@ void matrix_scan_user(void) {
                 break;
         }
     }
-}
+}*/

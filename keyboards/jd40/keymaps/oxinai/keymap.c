@@ -1,5 +1,5 @@
-#include "jd40.h"
-#include "action_layer.h"
+#include QMK_KEYBOARD_H
+#include "oxinai.h"
 
 #define FN_TAB LT(_AL2, KC_TAB)
 
@@ -62,9 +62,4 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_L] = ACTION_TAP_DANCE_DOUBLE(KC_L, KC_QUOT),
     [TD_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_ENT),
 
-};
-
-const uint16_t PROGMEM fn_actions[] = {
-    [0]  = ACTION_LAYER_MOMENTARY(1),  // Momentary Fn overlay
-    [1]  = ACTION_LAYER_MOMENTARY(2),  // Momentary Fn overlay
 };

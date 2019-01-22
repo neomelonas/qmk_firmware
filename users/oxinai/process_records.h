@@ -13,6 +13,7 @@ enum userspace_custom_keycodes {
   KC_COLEMAK,        // Sets default layer to COLEMAK
   KC_DVORAK,         // Sets default layer to DVORAK
   KC_WORKMAN,        // Sets default layer to WORKMAN
+  KC_FUNCTIONS,      // Sets default layer to FUNCTION
   KC_SALT,           // See drashna.c for details
   KC_RGB_T,          // Toggles RGB Layer Indication mode
   KC_SECRET_1,       // test1
@@ -20,27 +21,45 @@ enum userspace_custom_keycodes {
   KC_SECRET_3,       // test3
   KC_SECRET_4,       // test4
   KC_SECRET_5,       // test5
-  KC_CCCV,           // Hold to copy, tap to paste
   UC_FLIP,           // (ಠ痊ಠ)┻━┻
   UC_TABL,           // ┬─┬ノ( º _ ºノ)
   UC_SHRG,           // ¯\_(ツ)_/¯
   UC_DISA,           // ಠ_ಠ
+  OS_LIN,            // Linux
+  OS_MAC,            // MacOSX
+  OS_WIN,            // Windows
+  LOCKITM,
+  LOCKITW,
+  DYNAMIC_MACRO_RANGE,// DYN MACROS
   NEW_SAFE_RANGE     //use "NEWPLACEHOLDER for keymap specific codes
 };
+/*
+#ifdef TAP_DANCE_ENABLE
+enum td {
+    TD_co = 0,
+    TD_xo,
+    TD_ps
+};
+#endif
+*/
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record);
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
-#define FN_CAPS LT(_FL, KC_CAPS)
-#define CTRLENT MT(MOD_RCTL, KC_ENT)
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define ADJUST MO(_ADJUST)
 #define TG_MODS TG(_MODS)
 #define TG_GAME TG(_GAMEPAD)
+
+#define KC_DMR1 DYN_REC_START1
+#define KC_DMR2 DYN_REC_START2
+#define KC_DMP1 DYN_MACRO_PLAY1
+#define KC_DMP2 DYN_MACRO_PLAY2
+#define KC_DMRS DYN_REC_STOP
 
 #define KC_SEC1 KC_SECRET_1
 #define KC_SEC2 KC_SECRET_2
@@ -52,6 +71,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define DVORAK KC_DVORAK
 #define COLEMAK KC_COLEMAK
 #define WORKMAN KC_WORKMAN
+#define FUNCTION KC_FUNCTION
 
 #define KC_RESET RESET
 #define KC_RST KC_RESET
