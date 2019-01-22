@@ -56,6 +56,12 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 */
 // Defines actions for my global custom keycodes. Defined in oxinai.h file, shamelessly stolen from Drashna :)
 // Then runs the _keymap's record handler if not processed here
+
+void persistant_default_layer_set(uint16_t default_layer) {
+  eeconfig_update_default_layer(default_layer);
+  default_layer_set(default_layer);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // If console is enabled, it will print the matrix position and status of each key pressed
@@ -77,22 +83,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   //Switch Default layouts
   case KC_QWERTY:
     if (record->event.pressed) {
-      set_single_persistent_default_layer(_QWERTY);
+      persistant_default_layer_set(1UL<<_QWERTY);
     }
     break;
   case KC_COLEMAK:
     if (record->event.pressed) {
-      set_single_persistent_default_layer(_COLEMAK);
+      persistant_default_layer_set(1UL<<_COLEMAK);
     }
     break;
   case KC_DVORAK:
     if (record->event.pressed) {
-      set_single_persistent_default_layer(_DVORAK);
+      persistant_default_layer_set(1UL<<_DVORAK);
     }
     break;
   case KC_WORKMAN:
     if (record->event.pressed) {
-      set_single_persistent_default_layer(_WORKMAN);
+      persistant_default_layer_set(1UL<<_WORKMAN);
     }
     break;
   // Set OS for the Unicodes
@@ -119,8 +125,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     break;
 
-
-  case VRSN: // Prints firmware version
+  // Prints version if Console is enabled.
+  case VRSN:
     if (record->event.pressed) {
       send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), MACRO_TIMER);
     }

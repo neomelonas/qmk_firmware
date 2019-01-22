@@ -2,6 +2,7 @@
 #include "quantum.h"
 #include "version.h"
 #include "eeprom.h"
+#include "eeconfig.h"
 #include "process_records.h"
 
 /* Define layer names */
@@ -17,6 +18,8 @@ enum userspace_layers {
   _DIABLO,
   _MACROS,
   _MEDIA,
+  _MOUSE,
+  _SYSTEM,
   _LOWER,
   _RAISE,
   _ADJUST,
