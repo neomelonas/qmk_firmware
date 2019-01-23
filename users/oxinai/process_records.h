@@ -51,6 +51,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 
 #define FN_CAPS LT(_FUNC, KC_CAPS)
 #define FN_CTRL LT(_FUNC, KC_LCTRL)
+#define CTRLENT MT(MOD_RCTL, KC_ENT)
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
