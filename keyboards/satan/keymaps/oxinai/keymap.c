@@ -10,7 +10,6 @@
 // entirely and just use numbers.
 #define TAPPING_TOGGLE 2
 
-#define FN_CAPS LT(_FUNC, KC_CAPS)
 #define FN_MENU LT(_FUNC, KC_APP)
 #define CTRLENT MT(MOD_RCTL, KC_ENT)
 

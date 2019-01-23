@@ -1,11 +1,6 @@
-#include "dz60.h"
+#include QMK_KEYBOARD_H
+#include "oxinai.h"
 
-#define _BL 0
-#define MEDIA 1
-#define RGB 2
-
-#define _______ KC_TRNS
-#define XXXXXXX KC_NO
 
 #define RGB_STA RGB_M_P //rgb static
 #define RGB_BRE RGB_M_B //rgb breathe
@@ -14,8 +9,6 @@
 #define RGB_SNA RGB_M_SN //rgb snake
 #define RGB_KNI RGB_M_K //rgb knight
 #define RGB_GRA RGB_M_G //rgb gradient
-
-#define FN_CAPS LT(MO(1), KC_LCTL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -32,12 +25,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |Ctrl|Gui |Alt |      Space            |Alt |Gui |MO  |Ctrl |
    * `-----------------------------------------------------------'
    */
-    [_BL] = LAYOUT(
+    [_QWERTY] = LAYOUT_60_b_ansi(
         KC_GESC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_EQL , XXXXXXX, KC_BSPC,
         KC_TAB ,          KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_LBRC, KC_RBRC, KC_BSLS,
-        FN_CAPS ,         KC_A   , KC_S   , KC_D   , KC_F   , KC_G   , KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,          KC_ENT ,
-        KC_LSFT, XXXXXXX, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,          XXXXXXX,
-        KC_LCTL,          KC_LGUI, KC_LALT,                   KC_SPC ,                   MO(2), MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+        FN_CTRL ,         KC_A   , KC_S   , KC_D   , KC_F   , KC_G   , KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,          KC_ENT ,
+        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , KC_N   , KC_M   , KC_COMM, KC_DOT,             KC_RSFT,  KC_UP,    KC_SLSH,
+        KC_LCTL,          KC_LGUI, KC_LALT,           KC_SPC, KC_SPC, KC_SPC,              MO(_RGB), MO(_FUNC), KC_LEFT, KC_DOWN, KC_RGHT),
 
     /* Keymap : Second Layer (WASD and Media)
    * ,-----------------------------------------------------------.
@@ -52,13 +45,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |    |    |    |                        |    |    |    |    |
    * `-----------------------------------------------------------'
    */
-    [MEDIA] = LAYOUT(
-        KC_GRV , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______, KC_DEL ,
-        _______,          KC_PGUP, KC_UP,   KC_PGDN, KC_HOME, KC_INS,  KC_WH_U, _______, KC_PSCR, KC_SLCK, KC_PAUSE,_______, _______, RESET,
-        _______,          KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_DEL,  KC_WH_D, _______, KC_INS , KC_HOME, KC_PGUP, _______,          _______,
-        _______,          KC_MPLY, KC_MPRV, KC_MNXT, BL_TOGG, BL_STEP, _______, _______, KC_DEL , KC_END , KC_PGDN, _______,          _______,
-        _______,          _______, _______,                   _______,                   _______, _______, _______, _______,          _______),
-
+    [_FUNC] = LAYOUT_60_b_ansi(
+        KC_GRV , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______, KC_SLEP,
+        _______,          KC_PGUP, KC_UP,   KC_PGDN, KC_HOME, KC_INS,  _______, _______, _______, _______, _______, _______, _______, RESET  ,
+        _______,          KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_DEL,  _______, _______, _______, _______, _______, _______,          _______,
+        _______,          KC_MPLY, KC_MPRV, KC_MNXT, _______, BL_STEP, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, _______,
+        _______,          _______, _______,           _______, _______, _______,                 _______, _______, _______, _______,          _______),
    /* Keymap : Third Layer (RGB / Reset)
    * ,-----------------------------------------------------------.
    * | ` |   |   |   |   |   |   |   |   |   |   |   |   |       |
@@ -73,12 +65,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------'
    */
 
-    [RGB] = LAYOUT(
+    [_RGB] = LAYOUT_60_b_ansi(
         KC_GRV , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______, KC_SLEP,
         _______,          RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______, _______, _______, _______, RESET  ,
         _______,          RGB_STA, RGB_BRE, RGB_RAI, RGB_SWI, RGB_SNA, RGB_KNI, RGB_GRA, _______, _______, _______, _______,          _______,
                  _______, BL_DEC , BL_TOGG, BL_INC , BL_STEP, _______, _______, _______, _______,          _______, _______, _______, _______,
-        _______,          _______, _______,                   _______,                   _______, _______, _______, _______,          _______),
+        _______,          _______, _______,           _______, _______, _______,                 _______, _______, _______, _______,          _______),
 
 };
 
@@ -92,13 +84,13 @@ void led_set_user(uint8_t usb_led) {
 
 uint32_t layer_state_set_user(uint32_t state) {
     switch (biton32(state)) {
-        case _BL:
+        case _QWERTY:
             rgblight_setrgb(0x00, 0xff, 0x00);
             break;
-        case MEDIA:
+        case _FUNC:
             rgblight_setrgb(0xff, 0x80, 0x00);
             break;
-        case RGB:
+        case _RGB:
             rgblight_setrgb(0x4c, 0x00 , 0x99);
             break;
         default:

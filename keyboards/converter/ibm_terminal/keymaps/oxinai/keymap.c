@@ -28,7 +28,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
-#define FN_CAPS LT(_FUNC, KC_CAPS)
 #define CTRLENT MT(MOD_RCTL, KC_ENT)
 
 enum keycodes {

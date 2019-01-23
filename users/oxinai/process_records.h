@@ -49,6 +49,9 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
+#define FN_CAPS LT(_FUNC, KC_CAPS)
+#define FN_CTRL LT(_FUNC, KC_LCTRL)
+
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define ADJUST MO(_ADJUST)

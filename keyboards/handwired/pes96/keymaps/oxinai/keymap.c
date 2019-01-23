@@ -13,21 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "pes96.h"
-
-#define _BL 0
-#define _FL 1
-
-#define TAPPING_TOGGLE 2
-#define FN_CAPS LT(_FL, KC_CAPSLOCK)
-
-#define _______ KC_TRNS
-
-#define MAC_NEXT LT(KC_MFFD, KC_MNXT)
-#define MAC_PREV LT(KC_MRWD, KC_MPRV)
+#include QMK_KEYBOARD_H
+#include "oxinai.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_BL] = KEYMAP( /* Base */
+[_QWERTY] = KEYMAP( /* Base */
         KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_INS, KC_DEL, KC_HOME, KC_END,  KC_PGUP,  KC_PGDN, \
 		KC_GRV, KC_1,  KC_2,  KC_3,  KC_4,  KC_5,  KC_6,  KC_7,  KC_8,  KC_9,  KC_0, KC_MINS, KC_EQL,     KC_BSPC,     KC_NLCK, KC_PSLS, KC_PAST,  KC_PMNS, \
 		KC_TAB,   KC_Q,  KC_W,   KC_E,  KC_R,  KC_T,  KC_Y,  KC_U,  KC_I,  KC_O,  KC_P,  KC_LBRC, KC_RBRC,  KC_BSLS,   KC_P7,   KC_P8,   KC_P9, \
@@ -36,48 +26,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LCTL, KC_LGUI, KC_LALT,                     KC_SPC,             KC_RALT, MO(1), KC_LCTL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_P0,   KC_PDOT,  KC_PENT
     ),
 
-[_FL] = KEYMAP(
+[_FUNC] = KEYMAP(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,   _______, KC_VOLD, KC_VOLU, KC_MUTE, \
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, MAC_PREV, MAC_NEXT, \
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_MPRV, KC_MNXT, \
+        _______, KC_PGUP, KC_UP,   KC_PGDN, KC_HOME, KC_INS,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_DEL,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, _______, _______, _______, _______, \
         _______, _______, _______,                  _______,                  _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 };
-
-const uint16_t PROGMEM fn_actions[] = {
-
-};
-
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-  // MACRODOWN only works in this function
-      switch(id) {
-        case 0:
-          if (record->event.pressed) {
-            register_code(KC_RSFT);
-          } else {
-            unregister_code(KC_RSFT);
-          }
-        break;
-      }
-    return MACRO_NONE;
-};
-
-
-void matrix_init_user(void) {
-
-}
-
-void matrix_scan_user(void) {
-
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  return true;
-}
-
-void led_set_user(uint8_t usb_led) {
-
-}
