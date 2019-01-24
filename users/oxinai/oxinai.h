@@ -4,6 +4,9 @@
 #include "eeprom.h"
 #include "eeconfig.h"
 #include "process_records.h"
+#ifdef UNICODEMAP_ENABLE
+  #include "send_unicode.h"
+#endif
 
 /* Define layer names */
 enum userspace_layers {

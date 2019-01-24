@@ -16,7 +16,7 @@ enum keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* qwerty */
     [_QWERTY] = LAYOUT(
-                                   DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, KC_VOLD, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, KC_WAKE, _______, KC_PSCR, KC_SLCK, KC_PAUS,
+                                   DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, KC_VOLD, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, SL_THNK, SL_FOOL, SL_SHRG, UC_DISA, UC_SHRG,
                                    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
 
     LOCKITM, MO(_SYSTEM), KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  XXXXXXX, KC_BSPC,     KC_INS,  KC_HOME, KC_PGUP,     KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,

@@ -39,7 +39,6 @@ enum unicode_name {
   DEGREE // °
 };
 
-
 const uint32_t PROGMEM unicode_map[] = {
   [THINK]     = 0x1F914,
   [GRIN]      = 0x1F600,

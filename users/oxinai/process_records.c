@@ -154,6 +154,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 #endif
+  case SL_SHRG:
+    if (record->event.pressed) {
+      send_string("/shrug");
+    }
+    break;
+  case SL_FOOL:
+    if (record->event.pressed) {
+      send_string(":fool:");
+    }
+    break;
+  case SL_THNK:
+    if (record->event.pressed) {
+      send_string(":thunking:");
+    }
+    break;
   }
   return process_record_keymap(keycode, record) &&
   process_record_secrets(keycode, record);

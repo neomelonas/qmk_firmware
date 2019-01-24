@@ -25,6 +25,9 @@ enum userspace_custom_keycodes {
   UC_TABL,           // ┬─┬ノ( º _ ºノ)
   UC_SHRG,           // ¯\_(ツ)_/¯
   UC_DISA,           // ಠ_ಠ
+  SL_THNK,
+  SL_FOOL,
+  SL_SHRG,
   OS_LIN,            // Linux
   OS_MAC,            // MacOSX
   OS_WIN,            // Windows
