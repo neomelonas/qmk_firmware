@@ -4,9 +4,11 @@
 #include "eeprom.h"
 #include "eeconfig.h"
 #include "process_records.h"
+/*
 #ifdef UNICODEMAP_ENABLE
   #include "send_unicode.h"
 #endif
+*/
 /*#ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif
@@ -19,9 +21,11 @@ enum userspace_layers {
   _COLEMAK,
   _DVORAK,
   _WORKMAN,
+  _GREEK,
   _FUNC,
   _RGB,
   _MODS,
+  _EMOJI,
   _GAMEPAD,
   _MACROS,
   _MEDIA,

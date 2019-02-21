@@ -13,9 +13,11 @@ enum userspace_custom_keycodes {
   KC_COLEMAK,        // Sets default layer to COLEMAK
   KC_DVORAK,         // Sets default layer to DVORAK
   KC_WORKMAN,        // Sets default layer to WORKMAN
+  KC_GREEK,          // Sets default layer to GREEK
   KC_FUNCTIONS,      // Sets default layer to FUNCTION
   KC_SALT,           // See drashna.c for details
   KC_RGB_T,          // Toggles RGB Layer Indication mode
+  KC_UCIS,           // Start UCIS stuff
   KC_SECRET_1,       // test1
   KC_SECRET_2,       // test2
   KC_SECRET_3,       // test3
@@ -79,6 +81,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define DVORAK KC_DVORAK
 #define COLEMAK KC_COLEMAK
 #define WORKMAN KC_WORKMAN
+#define GREEK KC_GREEK
 #define FUNCTION KC_FUNCTION
 
 #define KC_RESET RESET

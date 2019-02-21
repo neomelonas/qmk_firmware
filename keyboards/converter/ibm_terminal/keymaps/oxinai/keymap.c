@@ -14,12 +14,75 @@ enum keycodes {
   LYR_SYS,
 };
 
+enum unicode_name {
+  THINK, // thinking face 🤔
+  GRIN, // grinning face 😊
+  SMRK, // smirk 😏
+  WEARY, // good shit 😩
+  UNAMU, // unamused 😒
+
+  SNEK, // snke 🐍
+  PENGUIN, // 🐧
+  DRAGON, // 🐉
+  MONKEY, // 🐒
+  CHICK, // 🐥
+  BOAR, // 🐗
+
+  OKOK, // 👌
+  EFFU, // 🖕
+  INUP, // 👆
+  THUP, // 👍
+  THDN, // 👎
+
+  BBB, // dat B 🅱
+  POO, // poop 💩
+  HUNDR, // 100 💯
+  EGGPL, // EGGPLANT 🍆
+  WATER, // wet 💦
+  TUMBLER, // 🥃
+
+  LIT, // fire 🔥
+  BANG, // ‽
+  IRONY, // ⸮
+  DEGREE // °
+};
+
+
+const uint32_t PROGMEM unicode_map[] = {
+  [THINK]     = 0x1F914,
+  [GRIN]      = 0x1F600,
+  [BBB]       = 0x1F171,
+  [POO]       = 0x1F4A9,
+  [HUNDR]     = 0x1F4AF,
+  [SMRK]      = 0x1F60F,
+  [WEARY]     = 0x1F629,
+  [EGGPL]     = 0x1F346,
+  [WATER]     = 0x1F4A6,
+  [LIT]       = 0x1F525,
+  [UNAMU]     = 0x1F612,
+  [SNEK]      = 0x1F40D,
+  [PENGUIN]   = 0x1F427,
+  [BOAR]      = 0x1F417,
+  [MONKEY]    = 0x1F412,
+  [CHICK]     = 0x1F425,
+  [DRAGON]    = 0x1F409,
+  [OKOK]      = 0x1F44C,
+  [EFFU]      = 0x1F595,
+  [INUP]      = 0x1F446,
+  [THDN]      = 0x1F44E,
+  [THUP]      = 0x1F44D,
+  [TUMBLER]   = 0x1F943,
+  [BANG]      = 0x0203D,
+  [IRONY]     = 0x02E2E,
+  [DEGREE]    = 0x000B0
+ };
+
 #include "dynamic_macro.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* qwerty */
     [_QWERTY] = LAYOUT(
-                                   DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, KC_VOLD, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, SL_THNK, SL_FOOL, SL_SHRG, UC_DISA, UC_SHRG,
+                                   DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, KC_VOLD, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, SL_THNK, SL_FOOL, SL_SHRG, LAY_QWE, OSL(_EMOJI),
                                    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
 
     LOCKITM, SYS_ESC,     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  XXXXXXX, KC_BSPC,     KC_INS,  KC_HOME, KC_PGUP,     KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
@@ -99,6 +162,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,     _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_DEL,  KC_WH_D, _______, _______, _______, _______, _______,          _______, _______,              _______,              _______, _______, _______, _______,
     _______, KC_SEC2,     _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
     _______, DYN_REC_START2,      _______,          _______,                       _______,                                              _______,          _______,              _______,              _______, _______, _______, _______
+    ),
+
+    [_EMOJI] = LAYOUT(
+                                   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                                   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+
+    _______, _______,     _______, X(SNEK), X(DRAGON), X(LIT), X(BBB), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
+    _______, _______,     _______, X(OKOK), X(THUP), X(EFFU), _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,     _______, _______, _______,     _______, _______, _______, _______,
+    _______, _______,     _______, X(THINK), X(THDN), X(GRIN), _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,              _______,              _______, _______, _______, _______,
+    _______, _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
+    _______, _______,     _______,          _______,                            _______,                                              _______,          _______,              _______,              _______, _______, _______, _______
     ),
 
 /*

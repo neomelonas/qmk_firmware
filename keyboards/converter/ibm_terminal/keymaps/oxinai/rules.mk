@@ -2,6 +2,7 @@
 #   change to "no" to disable the options, or define them in the Makefile in 
 #   the appropriate keymap folder that will get included automatically
 #
+#BOOTLOADER = qmk-dfu
 BOOTLOADER = halfkay
 BOOTMAGIC_ENABLE = yes      # Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = yes       # Mouse keys(+4700)
@@ -12,8 +13,8 @@ NKRO_ENABLE = yes           # Nkey Rollover - if this doesn't work, see here: ht
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output on port C6
-UNICODE_ENABLE = yes        # Unicode
-UNICODEMAP_ENABLE = no
+UNICODE_ENABLE = no         # Unicode
+UNICODEMAP_ENABLE = yes
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight. 
 PS2_USE_USART = yes

@@ -101,6 +101,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       persistant_default_layer_set(1UL<<_WORKMAN);
     }
     break;
+  case KC_GREEK:
+    if (record->event.pressed) {
+      persistant_default_layer_set(1UL<<_GREEK);
+    }
+    break;
   // Set OS for the Unicodes
   case OS_LIN:
     set_unicode_input_mode(UC_LNX);
@@ -114,7 +119,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     set_unicode_input_mode(UC_WIN);
     return false;
     break;
-
+#ifdef UCIS_ENABLE
+  case KC_UCIS:
+    qk_ucis_start();
+    return false;
+    break;
+#endif
   // Because hitting two or three keys at once is toooooo many D:
   case LOCKITM:
     SEND_STRING(SS_LCTRL(SS_LGUI("q")));

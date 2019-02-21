@@ -1,17 +1,42 @@
 #include QMK_KEYBOARD_H
 #include "oxinai.h"
 
-// Used for SHIFT_ESC
 #define MODS_CTRL_MASK  (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
-
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
 #define TAPPING_TOGGLE 2
 
 #define FN_MENU LT(_FUNC, KC_APP)
 #define CTRLENT MT(MOD_RCTL, KC_ENT)
+
+enum greekeys {
+    alpha,
+    beta,
+    gamma,
+    delta,
+    epsilon,
+    zeta,
+    eta,
+    theta,
+    iota,
+    kappa,
+    lambda,
+    mu,
+    nu,
+    xi,
+    omicron,
+    pi,
+    rho,
+    ssigma,
+    sigma,
+    tau,
+    upsilon,
+    phi,
+    chi,
+    psi,
+    omega,
+    larr,
+    rarr,
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap _QWERTY: (Base Layer) Default Layer
@@ -34,6 +59,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,       KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,         KC_RSFT, \
   KC_LCTL, KC_LGUI, KC_LALT,               KC_SPC,                             KC_RALT,  KC_RGUI, FN_MENU,CTRLENT),
 
+
+[_GREEK] = LAYOUT_60_ansi(
+  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______, \
+  _______,KC_SCLN,X(ssigma),X(epsilon),X(rho),X(tau),X(upsilon),X(theta),X(iota),X(omicron),X(pi),X(larr),X(rarr),_______, \
+  _______,X(alpha),X(sigma),X(delta),X(phi),X(gamma),X(eta),X(xi),X(kappa),X(lambda),_______,_______,   _______,      \
+   _______,   X(zeta),X(chi),X(psi),X(omega),X(beta),X(nu),X(mu),_______,_______,_______,     _______,        \
+  _______,_______,_______,                    _______,                            _______,_______,FN_MENU,_______),
+
+
   /* Keymap _FUNC: Function Layer
    * ,-----------------------------------------------------------.
    * | ` |F1 |F2 |F3 |F4 |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|  Del  |
@@ -52,6 +86,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,KC_PGUP,KC_UP,KC_PGDN,KC_HOME,KC_INS,KC_WH_U,_______,_______,_______,_______,_______,_______,RESET, \
   _______,KC_LEFT,KC_DOWN,KC_RGHT,KC_END,KC_DEL,KC_WH_D,_______,_______,_______,_______,_______,_______, \
   _______,KC_MPLY,KC_MPRV,KC_MNXT,_______,BL_STEP,_______,KC_MUTE,KC_VOLD,KC_VOLU,_______,_______, \
-  _______,_______,_______,                _______,                        _______,_______,_______,_______),
-};
+  _______,_______,_______,                _______,                        _______,MO(_MODS),_______,_______),
 
+[_MODS] = LAYOUT_60_ansi(
+  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______, \
+  _______,QWERTY,OS_WIN,_______,_______,_______,_______,KC_UCIS,_______,_______,_______,_______,_______,_______, \
+  _______,KC_SEC2,_______,_______,_______,GREEK,_______,_______,_______,OS_LIN,_______,_______,   _______,      \
+   _______,   _______,_______,_______,_______,_______,_______,OS_MAC, _______,_______,_______,     _______,        \
+  _______,_______,_______,                    _______,                            _______,_______,_______,_______),
+};
+const uint32_t PROGMEM unicode_map[] = {
+    [alpha] = 0x03B1,
+    [beta]  = 0x03B2,
+    [gamma] = 0x03B3,
+    [delta] = 0x03B4,
+    [epsilon] = 0x03B5,
+    [zeta]  = 0x03B6,
+    [eta]   = 0x03B7,
+    [theta] = 0x03B8,
+    [iota]  = 0x03B9,
+    [kappa] = 0x03BA,
+    [lambda] = 0x03BB,
+    [mu]    = 0x03BC,
+    [nu]    = 0x03BD,
+    [xi]    = 0x03BE,
+    [omicron] = 0x03BF,
+    [pi]    = 0x03C0,
+    [rho]   = 0x03C1,
+    [ssigma] = 0x03C2,
+    [sigma] = 0x03C3,
+    [tau]   = 0x03C4,
+    [upsilon] = 0x03C5,
+    [phi]   = 0x03C6,
+    [chi]   = 0x03C7,
+    [psi]   = 0x03C8,
+    [omega] = 0x03C9,
+    [larr]  = 0x027EA,
+    [rarr]  = 0x027EB,
+};
