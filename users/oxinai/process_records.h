@@ -30,6 +30,7 @@ enum userspace_custom_keycodes {
   SL_THNK,
   SL_FOOL,
   SL_SHRG,
+  SL_JC,
   OS_LIN,            // Linux
   OS_MAC,            // MacOSX
   OS_WIN,            // Windows

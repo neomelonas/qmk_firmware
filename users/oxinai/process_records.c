@@ -179,6 +179,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       send_string(":thunking:");
     }
     break;
+  case SL_JC:
+    if (record->event.pressed) {
+      send_string(":jimcannon:");
+    }
+    break;
   }
   return process_record_keymap(keycode, record) &&
   process_record_secrets(keycode, record);
