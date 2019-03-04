@@ -15,6 +15,10 @@ enum userspace_custom_keycodes {
   KC_WORKMAN,        // Sets default layer to WORKMAN
   KC_GREEK,          // Sets default layer to GREEK
   KC_FUNCTIONS,      // Sets default layer to FUNCTION
+  LAY_QWE,
+  LAY_COL,
+  LAY_WOR,
+  LAY_DVO,
   KC_SALT,           // See drashna.c for details
   KC_RGB_T,          // Toggles RGB Layer Indication mode
   KC_UCIS,           // Start UCIS stuff
@@ -36,7 +40,7 @@ enum userspace_custom_keycodes {
   OS_WIN,            // Windows
   LOCKITM,
   LOCKITW,
-  DYNAMIC_MACRO_RANGE,// DYN MACROS
+//  DYNAMIC_MACRO_RANGE,// DYN MACROS
   NEW_SAFE_RANGE     //use "NEWPLACEHOLDER for keymap specific codes
 };
 /*
