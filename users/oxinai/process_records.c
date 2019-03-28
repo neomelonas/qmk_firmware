@@ -106,6 +106,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       persistant_default_layer_set(1UL<<_GREEK);
     }
     break;
+  #if (defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE))
   // Set OS for the Unicodes
   case OS_LIN:
     set_unicode_input_mode(UC_LNX);
@@ -119,6 +120,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     set_unicode_input_mode(UC_WIN);
     return false;
     break;
+#endif
 #ifdef UCIS_ENABLE
   case KC_UCIS:
     qk_ucis_start();
