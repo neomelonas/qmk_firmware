@@ -1,9 +1,10 @@
 #include QMK_KEYBOARD_H
+#include "oxinai.h"
 #include "quantum_keycodes.h"
 #include "debug.h"
 #include "action_layer.h"
 #include "version.h"
-#include "vim.h"
+//#include "vim.h"
 
 #define VERSION_STRING QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION
 #define _______ KC_TRNS
@@ -162,31 +163,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // VIM Normal Mode
-[VIM] = LAYOUT_ergodox(
-    // Layer 2 Left Hand
-    X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
-    KC_TAB ,X_____X,VIM_W,  VIM_E  ,X_____X,X_____X,X_____X,
-    X_____X,VIM_A  ,VIM_S  ,VIM_D  ,X_____X,X_____X,
-    KC_LSFT,X_____X,VIM_X  ,VIM_C  ,VIM_V  ,VIM_B  ,X_____X,
-    KC_LCTL,KC_LALT,X_____X,X_____X,X_____X,
-
-                                            KC_HOME,KC_END ,
-                                            TO(SYMB),
-                                            GUI_T(KC_SPC),  KC_ESC ,_______,
-
-
-    // Layer 2 Right Hand
-                              X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
-                              X_____X,VIM_Y  ,VIM_U  ,VIM_I  ,VIM_O  ,VIM_P  ,X_____X,
-                                      VIM_H  ,VIM_J  ,VIM_K  ,VIM_L  ,X_____X,X_____X,
-                              X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,KC_LSFT,
-                                              X_____X,X_____X,X_____X,KC_RALT,KC_RCTL,
-
-    KC_PGUP,  KC_PGDN,
-    TO(SYMB),
-    KC_DEL , KC_ENT, GUI_T(KC_BSPC)
-
-),
+//[VIM] = LAYOUT_ergodox(
+//    // Layer 2 Left Hand
+//    X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
+//    KC_TAB ,X_____X,VIM_W,  VIM_E  ,X_____X,X_____X,X_____X,
+//    X_____X,VIM_A  ,VIM_S  ,VIM_D  ,X_____X,X_____X,
+//    KC_LSFT,X_____X,VIM_X  ,VIM_C  ,VIM_V  ,VIM_B  ,X_____X,
+//    KC_LCTL,KC_LALT,X_____X,X_____X,X_____X,
+//
+//                                            KC_HOME,KC_END ,
+//                                            TO(SYMB),
+//                                            GUI_T(KC_SPC),  KC_ESC ,_______,
+//
+//
+//    // Layer 2 Right Hand
+//                              X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
+//                              X_____X,VIM_Y  ,VIM_U  ,VIM_I  ,VIM_O  ,VIM_P  ,X_____X,
+//                                      VIM_H  ,VIM_J  ,VIM_K  ,VIM_L  ,X_____X,X_____X,
+//                              X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,KC_LSFT,
+//                                              X_____X,X_____X,X_____X,KC_RALT,KC_RCTL,
+//
+//    KC_PGUP,  KC_PGDN,
+//    TO(SYMB),
+//    KC_DEL , KC_ENT, GUI_T(KC_BSPC)
+//
+//),
 [MDIA] = LAYOUT_ergodox(
     // Layer 2 Left Hand
     X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,X_____X,
@@ -212,10 +213,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_DEL , KC_ENT, GUI_T(KC_BSPC)
 
 ),
-};
-
-const uint16_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)                // FN1 - Momentary Layer 1 (Symbols)
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)

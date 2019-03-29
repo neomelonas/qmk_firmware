@@ -1,3 +1,5 @@
+// Defines actions for my global custom keycodes. Defined in oxinai.h file, shamelessly stolen from Drashna :)
+// Then runs the _keymap's record handler if not processed here
 #include "oxinai.h"
 
 uint16_t copy_paste_timer;
@@ -11,51 +13,6 @@ __attribute__ ((weak))
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
-/*
-// tapdance, if enabled.
-#ifdef TAP_DANCE_ENABLE
-void cpy(qk_tap_dance_state_t *state, void *user_data) {
-    switch (state->count) {
-        case 1:
-            register_code(KC_LCTL); register_code(KC_C); unregister_code(KC_LCTL); unregister_code(KC_C);
-            break;
-        case 2:
-            register_code(KC_LGUI); register_code(KC_C); unregister_code(KC_LGUI); unregister_code(KC_C);
-            break;
-    }
-};
-
-void pst(qk_tap_dance_state_t *state, void *user_data) {
-    switch (state->count) {
-        case 1:
-            register_code(KC_LCTL); register_code(KC_V); unregister_code(KC_LCTL); unregister_code(KC_V);
-            break;
-        case 2:
-            register_code(KC_LGUI); register_code(KC_V); unregister_code(KC_LGUI); unregister_code(KC_V);
-            break;
-    }
-};
-
-void ctt(qk_tap_dance_state_t *state, void *user_data) {
-    switch (state->count) {
-        case 1:
-            register_code(KC_LCTL); register_code(KC_X); unregister_code(KC_LCTL); unregister_code(KC_X);
-            break;
-        case 2:
-            register_code(KC_LGUI); register_code(KC_X); unregister_code(KC_LGUI); unregister_code(KC_X);
-            break;
-    }
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_co]  = ACTION_TAP_DANCE_FN(cpy),
-    [TD_xo]  = ACTION_TAP_DANCE_FN(ctt),
-    [TD_ps]  = ACTION_TAP_DANCE_FN(pst),
-};
-#endif
-*/
-// Defines actions for my global custom keycodes. Defined in oxinai.h file, shamelessly stolen from Drashna :)
-// Then runs the _keymap's record handler if not processed here
 
 void persistant_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
@@ -106,7 +63,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       persistant_default_layer_set(1UL<<_GREEK);
     }
     break;
-  #if (defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE))
+#if (defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE) || defined(UCIS_ENABLE))
   // Set OS for the Unicodes
   case OS_LIN:
     set_unicode_input_mode(UC_LNX);
@@ -136,14 +93,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     SEND_STRING(SS_LGUI("l"));
     return false;
     break;
-
   // Prints version if Console is enabled.
   case VRSN:
     if (record->event.pressed) {
       send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), MACRO_TIMER);
     }
     break;
-
 #ifdef UNICODE_ENABLE
   case UC_FLIP: // (ノಠ痊ಠ)ノ彡┻━┻
     if (record->event.pressed) {
@@ -190,4 +145,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return process_record_keymap(keycode, record) &&
   process_record_secrets(keycode, record);
 }
-

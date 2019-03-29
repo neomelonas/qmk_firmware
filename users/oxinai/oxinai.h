@@ -26,7 +26,6 @@ enum userspace_layers {
   _RGB,
   _MODS,
   _EMOJI,
-  _MAC,
   _GAMEPAD,
   _MACROS,
   _MEDIA,

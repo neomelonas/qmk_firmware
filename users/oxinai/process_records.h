@@ -88,7 +88,8 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define COLEMAK KC_COLEMAK
 #define WORKMAN KC_WORKMAN
 #define GREEK KC_GREEK
-#define FUNCTION KC_FUNCTION
+#define FUNCS KC_FUNCTIONS
+#define MACRS KC_MACROS
 
 #define KC_RESET RESET
 #define KC_RST KC_RESET
