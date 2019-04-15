@@ -21,9 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*#include "../../config.h"*/
 #include "config_common.h"
 
-#define MANUFACTURER oxinai pescamoose
-#define PRODUCT 5 degree GH60-Satan
-
 /* Tap Dance */
 #define TAPPING_TERM 200
 #define GRAVE_ESC_ALT_OVERRIDE
