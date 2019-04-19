@@ -43,15 +43,6 @@ enum userspace_custom_keycodes {
 //  DYNAMIC_MACRO_RANGE,// DYN MACROS
   NEW_SAFE_RANGE     //use "NEWPLACEHOLDER for keymap specific codes
 };
-/*
-#ifdef TAP_DANCE_ENABLE
-enum td {
-    TD_co = 0,
-    TD_xo,
-    TD_ps
-};
-#endif
-*/
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record);
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
@@ -61,14 +52,14 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 
 #define FN_CAPS LT(_FUNC, KC_CAPS)
 #define FN_TAB  LT(_FUNC, KC_TAB)
-#define LO_TAB LT(_LOWER, KC_TAB)
+#define LO_TAB  LT(_LOWER, KC_TAB)
 #define FN_FUNC MO(_FUNC)
 #define FN_CTRL LT(_FUNC, KC_LCTRL)
 #define CTRLENT MT(MOD_RCTL, KC_ENT)
 
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
-#define ADJUST MO(_ADJUST)
+#define LOWER   MO(_LOWER)
+#define RAISE   MO(_RAISE)
+#define ADJUST  MO(_ADJUST)
 #define TG_MODS TG(_MODS)
 #define TG_GAME TG(_GAMEPAD)
 
@@ -84,16 +75,16 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define KC_SEC4 KC_SECRET_4
 #define KC_SEC5 KC_SECRET_5
 
-#define QWERTY KC_QWERTY
-#define DVORAK KC_DVORAK
+#define QWERTY  KC_QWERTY
+#define DVORAK  KC_DVORAK
 #define COLEMAK KC_COLEMAK
 #define WORKMAN KC_WORKMAN
-#define GREEK KC_GREEK
-#define FUNCS KC_FUNCTIONS
-#define MACRS KC_MACROS
+#define GREEK   KC_GREEK
+#define FUNCS   OSL(_FUNC)
+#define MACRS   OSL(_MACROS)
 
 #define KC_RESET RESET
-#define KC_RST KC_RESET
+#define KC_RST   KC_RESET
 
 #ifdef SWAP_HANDS_ENABLE
 #define KC_C1R3 SH_TT
