@@ -17,11 +17,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef CONFIG_H
 #define CONFIG_H
-
+#endif
 /*#include "../../config.h"*/
 #include "config_common.h"
 
 /* Tap Dance */
+#ifdef TAP_DANCE_ENABLE
 #define TAPPING_TERM 200
 #define GRAVE_ESC_ALT_OVERRIDE
 #define PREVENT_STUCK_MODIFIERS

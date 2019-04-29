@@ -83,9 +83,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FUNC] = LAYOUT_60_ansi(
   KC_GRV,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,KC_F12,KC_DEL, \
   _______,KC_PGUP,KC_UP,KC_PGDN,KC_HOME,KC_INS,KC_WH_U,_______,_______,_______,_______,_______,_______,RESET, \
-  _______,KC_LEFT,KC_DOWN,KC_RGHT,KC_END,KC_DEL,KC_WH_D,_______,_______,_______,_______,_______,_______, \
+  _______,KC_LEFT,KC_DOWN,KC_RGHT,KC_END,KC_DEL,KC_WH_D,_______,_______,_______,_______,VRSN,_______, \
   _______,KC_MPLY,KC_MPRV,KC_MNXT,_______,BL_STEP,_______,KC_MUTE,KC_VOLD,KC_VOLU,_______,_______, \
-  _______,_______,_______,                _______,                        _______,TG(_MODS),_______,_______),
+  _______,_______,_______,                _______,                        _______,OSL(_MODS),_______,_______),
 
 [_MODS] = LAYOUT_60_ansi(
   _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______, \
@@ -94,32 +94,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    _______,   _______,_______,_______, VRSN, _______,_______,OS_MAC, _______,_______,_______,     _______,        \
   _______,_______,_______,                    _______,                            _______,_______,_______,_______),
 };
+
 const uint32_t PROGMEM unicode_map[] = {
-    [alpha] = 0x03B1,
-    [beta]  = 0x03B2,
-    [gamma] = 0x03B3,
-    [delta] = 0x03B4,
+    [alpha]   = 0x03B1,
+    [beta]    = 0x03B2,
+    [gamma]   = 0x03B3,
+    [delta]   = 0x03B4,
     [epsilon] = 0x03B5,
-    [zeta]  = 0x03B6,
-    [eta]   = 0x03B7,
-    [theta] = 0x03B8,
-    [iota]  = 0x03B9,
-    [kappa] = 0x03BA,
-    [lambda] = 0x03BB,
-    [mu]    = 0x03BC,
-    [nu]    = 0x03BD,
-    [xi]    = 0x03BE,
+    [zeta]    = 0x03B6,
+    [eta]     = 0x03B7,
+    [theta]   = 0x03B8,
+    [iota]    = 0x03B9,
+    [kappa]   = 0x03BA,
+    [lambda]  = 0x03BB,
+    [mu]      = 0x03BC,
+    [nu]      = 0x03BD,
+    [xi]      = 0x03BE,
     [omicron] = 0x03BF,
-    [pi]    = 0x03C0,
-    [rho]   = 0x03C1,
-    [ssigma] = 0x03C2,
-    [sigma] = 0x03C3,
-    [tau]   = 0x03C4,
+    [pi]      = 0x03C0,
+    [rho]     = 0x03C1,
+    [ssigma]  = 0x03C2,
+    [sigma]   = 0x03C3,
+    [tau]     = 0x03C4,
     [upsilon] = 0x03C5,
-    [phi]   = 0x03C6,
-    [chi]   = 0x03C7,
-    [psi]   = 0x03C8,
-    [omega] = 0x03C9,
-    [larr]  = 0x027EA,
-    [rarr]  = 0x027EB,
+    [phi]     = 0x03C6,
+    [chi]     = 0x03C7,
+    [psi]     = 0x03C8,
+    [omega]   = 0x03C9,
+    [larr]    = 0x027EA,
+    [rarr]    = 0x027EB,
 };

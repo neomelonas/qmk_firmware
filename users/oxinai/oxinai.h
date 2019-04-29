@@ -9,11 +9,11 @@
   #include "send_unicode.h"
 #endif
 */
-/*#ifdef TAP_DANCE_ENABLE
+/*
+#ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif
 */
-
 /* Define layer names */
 enum userspace_layers {
   _QWERTY = 0,

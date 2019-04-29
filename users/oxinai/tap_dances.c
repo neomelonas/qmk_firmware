@@ -45,7 +45,7 @@ void rsft_reset (qk_tap_dance_state_t *state, void *user_data) {
     case DOUBLE_HOLD: unregister_code(KC_PGUP); break;
     case DOUBLE_SINGLE_TAP: unregister_code(KC_SLSH); break;
   }
-}
+};
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_Q] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_1),
