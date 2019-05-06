@@ -28,8 +28,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PREVENT_STUCK_MODIFIERS
 #define IGNORE_MOD_TAP_INTERRUPT
 #endif
-
-#define QMK_ESC_OUTPUT F0 // usually COL
-#define QMK_ESC_INPUT D0 // usually ROW
-#define QMK_LED B6
-
