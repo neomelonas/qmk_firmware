@@ -29,6 +29,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IGNORE_MOD_TAP_INTERRUPT
 #endif
 
+#ifdef RGBLIGHT_ENABLE
+#undef RGB_DI_PIN
+#define RGB_DI_PIN B2
+#undef RGBLED_NUM
+#define RGBLED_NUM 16        // Number of LEDs
+#undef RGBLIGHT_HUE_STEP
+#define RGBLIGHT_HUE_STEP 8
+#undef RGBLIGHT_SAT_STEP
+#define RGBLIGHT_SAT_STEP 8
+#undef RGBLIGHT_VAL_STEP
+#define RGBLIGHT_VAL_STEP 8
+#endif
+
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 250
+
 #define QMK_ESC_OUTPUT F0 // usually COL
 #define QMK_ESC_INPUT D0 // usually ROW
 #define QMK_LED B6
