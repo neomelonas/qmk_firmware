@@ -59,6 +59,8 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 
 #define LOWER   MO(_LOWER)
 #define RAISE   MO(_RAISE)
+#define OLOW    OSL(_LOWER)
+#define ORAI    OSL(_RAISE)
 #define ADJUST  MO(_ADJUST)
 #define TG_MODS TG(_MODS)
 #define TG_GAME TG(_GAMEPAD)
