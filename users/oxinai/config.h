@@ -23,4 +23,4 @@
 
 
 #define MACRO_TIMER 5
-
+#define USB_MAX_POWER_CONSUMPTION 100
