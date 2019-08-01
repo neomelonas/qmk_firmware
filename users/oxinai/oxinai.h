@@ -28,6 +28,7 @@ enum userspace_layers {
   _EMOJI,
   _GAMEPAD,
   _HITBOX,
+  _CALC,
   _MACROS,
   _MEDIA,
   _MOUSE,

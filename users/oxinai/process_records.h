@@ -40,6 +40,7 @@ enum userspace_custom_keycodes {
   OS_WIN,            // Windows
   LOCKITM,
   LOCKITW,
+  DbZ,
 //  DYNAMIC_MACRO_RANGE,// DYN MACROS
   NEW_SAFE_RANGE     //use "NEWPLACEHOLDER for keymap specific codes
 };

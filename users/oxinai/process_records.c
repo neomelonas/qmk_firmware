@@ -141,6 +141,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       send_string(":jimcannon:");
     }
     break;
+  case DbZ:  // 10key double 0
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_KP_0)SS_TAP(X_KP_0));
+    }
+    break;
   }
   return process_record_keymap(keycode, record) &&
   process_record_secrets(keycode, record);
