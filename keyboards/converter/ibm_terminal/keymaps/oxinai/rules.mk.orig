@@ -5,7 +5,7 @@
 #   the appropriate keymap folder that will get included automatically
 #
 #BOOTLOADER = qmk-dfu
->>>>>>> 2b2f72c24... A bunch of migrated keymaps.
+>>>>>>> 0a55230da... A bunch of migrated keymaps.
 BOOTLOADER = halfkay
 BOOTMAGIC_ENABLE = yes      # Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = yes       # Mouse keys(+4700)
@@ -23,7 +23,7 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 =======
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight. 
->>>>>>> 2b2f72c24... A bunch of migrated keymaps.
+>>>>>>> 0a55230da... A bunch of migrated keymaps.
 PS2_USE_USART = yes
 API_SYSEX_ENABLE = no
 TAP_DANCE_ENABLE = no
