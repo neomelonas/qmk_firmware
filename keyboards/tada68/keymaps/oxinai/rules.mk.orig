@@ -21,7 +21,7 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 <<<<<<< HEAD
 WPM_ENABLE = yes
 =======
->>>>>>> d1ac7a57f... A bunch of migrated keymaps.
+>>>>>>> 2b2f72c24... A bunch of migrated keymaps.
 
 ifndef QUANTUM_DIR
 	include ../../../../Makefile
