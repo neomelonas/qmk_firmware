@@ -100,13 +100,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 <<<<<<< HEAD
-=======
 #if defined(WPM_ENABLE)
   case KC_WPM:
     get_current_wpm();
     break;
 #endif
->>>>>>> aa7dd933b... Migrating from breaking changes
+=======
+>>>>>>> d1ac7a57f... A bunch of migrated keymaps.
 #ifdef UNICODE_ENABLE
   case UC_FLIP: // (ノಠ痊ಠ)ノ彡┻━┻
     if (record->event.pressed) {
