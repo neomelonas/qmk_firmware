@@ -102,3 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     */
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa7dd933b... Migrating from breaking changes
