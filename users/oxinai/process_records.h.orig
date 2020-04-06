@@ -56,22 +56,27 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define FN_TAB  LT(_FUNC, KC_TAB)
 #define LO_TAB  LT(_LOWER, KC_TAB)
 #define FN_FUNC MO(_FUNC)
+<<<<<<< HEAD
+#define KC_FUNC MO(_FUNC)
+#define KC_RGBL MO(_RGB) // RGB Layer Momentary
 #define FN_CTRL LT(_FUNC, KC_LCTRL)
 #define CTRLENT MT(MOD_RCTL, KC_ENT)
 #define CTRLRGT MT(MOD_RCTL, KC_RIGHT)
-<<<<<<< HEAD
 #define SHIFTUP MT(MOD_RSFT, KC_UP)
 #define MCRSDWN LT(_MACROS, KC_DOWN)
 #define FNCDOWN LT(_FUNC, KC_DOWN)
 #define GUILEFT MT(MOD_RGUI, KC_LEFT)
 =======
+#define FN_CTRL LT(_FUNC, KC_LCTRL)
+#define CTRLENT MT(MOD_RCTL, KC_ENT)
+#define CTRLRGT MT(MOD_RCTL, KC_RIGHT)
 #define RALTLFT MT(MOD_RALT, KC_LEFT)
 #define SHIFTUP MT(MOD_RSFT, KC_UP)
 #define MCRSDWN LT(_MACROS, KC_DOWN)
 
 #define MC_LEFT LCTL(KC_LEFT)
 #define MC_RGHT LCTL(KC_RGHT)
->>>>>>> 0e5dc74fb... Migrating from breaking changes
+>>>>>>> e494ce479... Migrating from breaking changes
 
 #define LOWER   MO(_LOWER)
 #define RAISE   MO(_RAISE)

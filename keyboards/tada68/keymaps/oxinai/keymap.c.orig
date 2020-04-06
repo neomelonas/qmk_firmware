@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                        KC_RALT, MACRS,  KC_RCTRL, KC_LEFT,KC_DOWN,KC_RGHT),
 =======
   KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                        KC_RALT, OS_MARS,  KC_RCTRL, KC_LEFT,KC_DOWN,KC_RGHT),
->>>>>>> 0e5dc74fb... Migrating from breaking changes
+>>>>>>> e494ce479... Migrating from breaking changes
 
   /* Keymap _FL: Function Layer
    * ,---------------------------------------------------------------.
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,KC_LEFT,KC_DOWN,KC_RIGHT, KC_END, KC_DEL,_______,_______,_______,_______,_______,_______,        _______, TG(_MACROS), \
 =======
   _______,KC_LEFT,KC_DOWN,KC_RIGHT, KC_END, KC_DEL,_______,_______,_______,_______,_______,_______,        _______, MACRS, \
->>>>>>> 0e5dc74fb... Migrating from breaking changes
+>>>>>>> e494ce479... Migrating from breaking changes
   _______,KC_MPLY,KC_MPRV,KC_MNXT,BL_DEC, BL_TOGG,BL_INC,KC_MUTE,KC_VOLD,KC_VOLU,_______,KC_BTN1, KC_MS_U, KC_BTN2, \
   _______,_______,_______,                 _______,               _______,_______,_______,KC_MS_L,KC_MS_D, KC_MS_R),
 
