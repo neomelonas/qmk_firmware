@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_VOLD, KC_MPRV,     FN_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_BSLS, KC_ENT,               KC_UP,                KC_P4,   KC_P5,   KC_P6,   KC_PCMM,
     KC_MUTE, KC_MPLY,     KC_LSFT, KC_LGUI, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          XXXXXXX, KC_RSFT,     KC_LEFT, KC_RCTL, KC_RGHT,     KC_P1,   KC_P2,   KC_P3,   KC_PENT,
     DYN_REC_STOP, OSL(_SYSTEM), KC_LCTL,          KC_LALT,                            KC_SPC,                                               KC_RALT,          CTRLENT,              KC_DOWN,              XXXXXXX, KC_P0,   KC_PDOT, XXXXXXX
->>>>>>> 0e5dc74fb... Migrating from breaking changes
+>>>>>>> e494ce479... Migrating from breaking changes
     ),
 
     /* colemak */
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,     _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_LBRC, KC_RBRC,          _______,     _______, _______,  _______,     _______, _______, _______, _______,
 =======
     _______, _______,     _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_LBRC, KC_RBRC,          _______,     _______, _______, _______,     _______, _______, _______, _______,
->>>>>>> 0e5dc74fb... Migrating from breaking changes
+>>>>>>> e494ce479... Migrating from breaking changes
     _______, _______,     _______, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,          _______, _______,              _______,              _______, _______, _______, _______,
     _______, _______,     _______, _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
     _______, _______,     _______,          _______,                            _______,                                              _______,          _______,              _______,              _______, _______, _______, _______
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 =======
     LOCKITM, KC_ESC,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
     LOCKITW, _______,     _______, LAY_QWE, OS_WIN,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,     _______, _______, _______,     _______, _______, _______, _______,
->>>>>>> 0e5dc74fb... Migrating from breaking changes
+>>>>>>> e494ce479... Migrating from breaking changes
     _______, _______,     _______, _______, _______, LAY_DVO, _______, _______, _______, _______, LAY_WOR, OS_LIN,  _______, _______,          _______, _______,              _______,              _______, _______, _______, _______,
     _______, KC_SEC2,     _______, _______, _______, _______, LAY_COL, _______, _______, _______, OS_MAC,  _______, _______, _______,          _______, _______,     _______, _______, _______,     _______, _______, _______, _______,
     _______, KC_SEC1,     _______,          _______,                            _______,                                              _______,          _______,              _______,              _______, _______, _______, _______
@@ -119,6 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_SEC3,     _______, _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______,          _______, _______,     KC_PGUP, _______, KC_PGDN,     _______, _______, _______, _______,
     _______, _______,      _______,          _______,                       _______,                                              _______,          _______,              _______,                  _______, _______, _______, _______
     ),
+/*
 =======
                                    KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,
@@ -141,8 +142,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,     _______,          _______,                            _______,                                              _______,          _______,              _______,              _______, _______, _______, _______
     ),
 */
->>>>>>> 0e5dc74fb... Migrating from breaking changes
 /*
+>>>>>>> e494ce479... Migrating from breaking changes
     [XXX] = LAYOUT(
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -156,10 +157,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 };
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
->>>>>>> aa7dd933b... Migrating from breaking changes
-=======
-
->>>>>>> 0e5dc74fb... Migrating from breaking changes
+>>>>>>> e494ce479... Migrating from breaking changes
