@@ -8,7 +8,7 @@ extern keymap_config_t keymap_config;
 
 enum layers {
     _L0 = 0,
-    _L1,
+/*    _L1,
     _L2,
     _L3,
     _L4,
