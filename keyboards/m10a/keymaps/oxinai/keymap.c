@@ -18,7 +18,6 @@ enum layers {
     _L8,
     _L9
 };
-
 #define FN_ZERO LT(_L9, KC_0)
 
 //static uint8_t current_layer;
