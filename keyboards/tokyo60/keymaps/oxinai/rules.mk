@@ -1,0 +1,4 @@
+KEY_LOCK_ENABLE = yes
+BOOTLOADER=qmk-dfu
+VIA_ENABLE = yes
+BOOTMAGIC_ENABLE = lite
