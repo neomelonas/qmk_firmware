@@ -18,6 +18,7 @@ enum layers {
     _L8,
     _L9
 */};
+
 #define FN_ZERO LT(_L9, KC_0)
 
 //static uint8_t current_layer;
@@ -63,3 +64,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_L8] = {{_______, _______, RESET  }, {BL_STEP, BL_TOGG, BL_BRTG}, {_______, _______, _______}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L9] = {{DF(_L6), DF(_L7), DF(_L8)}, {DF(_L3), DF(_L4), DF(_L5)}, {DF(_L0), DF(_L1), DF(_L2)}, {XXXXXXX, XXXXXXX, _______}},
 */};
+
