@@ -12,7 +12,7 @@ enum layers {
     _L1,
 =======
 /*    _L1,
->>>>>>> a07c03146... m10a map for stream; tokyo60 keeps breaking.
+>>>>>>> 962b15da7... m10a map for stream; tokyo60 keeps breaking.
     _L2,
     _L3,
     _L4,
@@ -26,7 +26,7 @@ enum layers {
 =======
 */};
 
->>>>>>> a07c03146... m10a map for stream; tokyo60 keeps breaking.
+>>>>>>> 962b15da7... m10a map for stream; tokyo60 keeps breaking.
 #define FN_ZERO LT(_L9, KC_0)
 
 //static uint8_t current_layer;
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_L1] = {{KC_PPLS, KC_PMNS, KC_PAST}, {KC_PSLS, KC_PERC, KC_COMM}, {KC_PDOT, KC_EQL,  KC_PENT}, {XXXXXXX, XXXXXXX, MO(_L9)}},
 =======
 /*    [_L1] = {{KC_PPLS, KC_PMNS, KC_PAST}, {KC_PSLS, KC_PERC, KC_COMM}, {KC_PDOT, KC_EQL,  KC_PENT}, {XXXXXXX, XXXXXXX, MO(_L9)}},
->>>>>>> a07c03146... m10a map for stream; tokyo60 keeps breaking.
+>>>>>>> 962b15da7... m10a map for stream; tokyo60 keeps breaking.
     [_L2] = {{KC_CIRC, KC_AMPR, KC_EXLM}, {S(KC_D), S(KC_E), S(KC_F)}, {S(KC_A), S(KC_B), S(KC_C)}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L3] = {{KC_SEC2, UC_M_OS, UC_M_WC}, {UC_FLIP, UC_DISA, UC_SHRG}, {KC_DMP1, KC_DMP2, KC_DMRS}, {XXXXXXX, XXXXXXX, MO(_L9)}},
     [_L4] = {{KC_7,    KC_8,    KC_9   }, {KC_4,    KC_5,    KC_6   }, {KC_1,    KC_2,    KC_3   }, {XXXXXXX, XXXXXXX, FN_ZERO}},
@@ -80,4 +80,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 =======
 */};
 
->>>>>>> a07c03146... m10a map for stream; tokyo60 keeps breaking.
+>>>>>>> 962b15da7... m10a map for stream; tokyo60 keeps breaking.
