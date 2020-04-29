@@ -17,11 +17,7 @@ enum layers {
     _L7,
     _L8,
     _L9
-<<<<<<< HEAD
 };
-=======
-*/};
->>>>>>> a07c03146... m10a map for stream; tokyo60 keeps breaking.
 
 #define FN_ZERO LT(_L9, KC_0)
 
