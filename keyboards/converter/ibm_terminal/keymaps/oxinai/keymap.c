@@ -3,7 +3,6 @@
 
 #define SYS_ESC LT(_SYSTEM, KC_ESC)
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* qwerty */
     [_QWERTY] = LAYOUT(
                                    KC_F13,  KC_F14,  KC_F15, KC_VOLU, KC_MPLY, KC_MPRV, KC_MNXT, SL_THNK, SL_FOOL, SL_JC, SL_SHRG, VRSN,
