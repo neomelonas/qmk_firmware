@@ -41,6 +41,7 @@ enum userspace_custom_keycodes {
   LOCKITM,
   LOCKITW,
   DbZ,
+  KC_WPM,            // WPM Printer
 //  DYNAMIC_MACRO_RANGE,// DYN MACROS
   NEW_SAFE_RANGE     //use "NEWPLACEHOLDER for keymap specific codes
 };
@@ -60,15 +61,21 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define CTRLRGT MT(MOD_RCTL, KC_RIGHT)
 #define SHIFTUP MT(MOD_RSFT, KC_UP)
 #define MCRSDWN LT(_MACROS, KC_DOWN)
-#define FNCDOWN LT(_FUNC, KC_DOWN)
-#define GUILEFT MT(MOD_RGUI, KC_LEFT)
+#define RALTLFT MT(MOD_RALT, KC_LEFT)
+#define SHIFTUP MT(MOD_RSFT, KC_UP)
+#define MCRSDWN LT(_MACROS, KC_DOWN)
+
+#define MC_LEFT LCTL(KC_LEFT)
+#define MC_RGHT LCTL(KC_RGHT)
 
 #define LOWER   MO(_LOWER)
 #define RAISE   MO(_RAISE)
 #define OLOW    OSL(_LOWER)
 #define ORAI    OSL(_RAISE)
 #define ADJUST  MO(_ADJUST)
+#define MACRS   MO(_MACROS)
 #define TG_MODS TG(_MODS)
+#define MO_GAME MO(_GAMEPAD)
 #define TG_GAME TG(_GAMEPAD)
 
 #define KC_DMR1 DYN_REC_START1
