@@ -55,6 +55,8 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define FN_TAB  LT(_FUNC, KC_TAB)
 #define LO_TAB  LT(_LOWER, KC_TAB)
 #define FN_FUNC MO(_FUNC)
+#define KC_FUNC MO(_FUNC)
+#define KC_RGBL MO(_RGB) // RGB Layer Momentary
 #define FN_CTRL LT(_FUNC, KC_LCTRL)
 #define CTRLENT MT(MOD_RCTL, KC_ENT)
 #define CTRLRGT MT(MOD_RCTL, KC_RIGHT)
