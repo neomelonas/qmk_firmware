@@ -64,6 +64,8 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define MCRSDWN LT(_MACROS, KC_DOWN)
 #define FNCDOWN LT(_FUNC, KC_DOWN)
 #define GUILEFT MT(MOD_RGUI, KC_LEFT)
+#define GUIDOWN MT(MOD_RGUI, KC_DOWN)
+#define ALTLEFT MT(MOD_RALT, KC_LEFT)
 
 #define LOWER   MO(_LOWER)
 #define RAISE   MO(_RAISE)
