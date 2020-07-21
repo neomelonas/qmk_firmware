@@ -30,6 +30,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #endif
 #endif //KEYLOGGER_ENABLE
 
+#ifdef TRILAYER_ENABLED
+uint32_t layer_state_set_user(uint32_t state)
+{
+    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
+#endif
+
 // If dynamic macros are enabled, use 'em.
 #ifdef DYNMAC_ENABLE
   if (!process_record_dynamic_macro(keycode, record)) {
