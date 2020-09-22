@@ -27,7 +27,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_LEFT,   KC_DOWN,    KC_RIGHT),
     [_FUNC] = LAYOUT(/* media function layer, toggled on a single tap */
                  KC_TRNS,   KC_MPRV,    KC_VOLU,
-                 KC_MUTE,   KC_SPC,     KC_VOLD,
 
                             KC_A,
                  KC_K,      KC_Z,    KC_J),

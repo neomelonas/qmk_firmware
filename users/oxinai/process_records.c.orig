@@ -33,10 +33,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #endif
 #endif //KEYLOGGER_ENABLE
 
-<<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
->>>>>>> 8f4f98047... porting planck rev3/calc & oxinai keymaps, iris rev3 oxinai keymap, update to users stuff
+
+>>>>>>> e3e2dbd39... adding some stuff; fixed the model m; good ideas with navi10, userspace stuff, minivan, and nightmare
 #ifdef TRILAYER_ENABLED
 uint32_t layer_state_set_user(uint32_t state)
 {
