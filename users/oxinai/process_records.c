@@ -1,4 +1,4 @@
-// Defines actions for my global custom keycodes. Defined in oxinai.h file, shamelessly stolen from Drashna :)
+// Defines actions for my global custom keycodes. Defined in oxinai.h file, parts (most) shamelessly stolen from drashna :)
 // Then runs the _keymap's record handler if not processed here
 #include "oxinai.h"
 
@@ -19,6 +19,9 @@ void persistant_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
+
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // If console is enabled, it will print the matrix position and status of each key pressed
@@ -29,6 +32,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     xprintf("KL: col: %u, row: %u, pressed: %u\n", record->event.key.col, record->event.key.row, record->event.pressed);
   #endif
 #endif //KEYLOGGER_ENABLE
+
+
 
 #ifdef TRILAYER_ENABLED
 uint32_t layer_state_set_user(uint32_t state)

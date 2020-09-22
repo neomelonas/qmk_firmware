@@ -17,7 +17,7 @@
 /* Define layer names */
 enum userspace_layers {
   _QWERTY = 0,
-  _NUMLOCK = 0,
+  _NUMLOCK,
   _COLEMAK,
   _DVORAK,
   _WORKMAN,
