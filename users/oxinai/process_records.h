@@ -70,6 +70,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 #define ALTLEFT MT(MOD_RALT, KC_LEFT)
 #define SYS_ESC LT(_SYSTEM, KC_ESC)
 #define KC_FINS LT(_FUNC, KC_INS)
+#define FN_SPC  LT(_FUNC, KC_SPC)
 
 #define LOWER   MO(_LOWER)
 #define RAISE   MO(_RAISE)
