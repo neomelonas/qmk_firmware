@@ -19,8 +19,10 @@ void persistant_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-
-
+__attribute__ ((weak))
+uint32_t layer_state_set_keymap(uint32_t state) {
+    return state;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -32,6 +34,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     xprintf("KL: col: %u, row: %u, pressed: %u\n", record->event.key.col, record->event.key.row, record->event.pressed);
   #endif
 #endif //KEYLOGGER_ENABLE
+
 
 
 #ifdef TRILAYER_ENABLED
