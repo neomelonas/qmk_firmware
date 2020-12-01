@@ -2,7 +2,7 @@
 
 userspace_config_t userspace_config;
 #if (defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE) || defined(UCIS_ENABLE))
-    #define OXINAI_UNICODE_MODE UC_LINUX
+    #define OXINAI_UNICODE_MODE UC_LNX
 #else
     #define OXINAI_UNICODE_MODE 2
 #endif
