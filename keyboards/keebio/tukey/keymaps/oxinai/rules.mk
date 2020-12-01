@@ -1,2 +1,3 @@
+BOOTLOADER = amtel-dfu
 MOUSEKEY_ENABLE = yes
 

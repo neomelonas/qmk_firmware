@@ -2,7 +2,7 @@
 #   change to "no" to disable the options, or define them in the Makefile in 
 #   the appropriate keymap folder that will get included automatically
 #
-USERNAME := oxinai
+USER)NAME := oxinai
 BOOTLOADER = qmk-dfu
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = yes       # Mouse keys(+4700)
@@ -15,7 +15,7 @@ MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output on port C6
 UNICODE_ENABLE = no         # Unicode
 UCIS_ENABLE = no
-UNICODEMAP_ENABLE = yes
+UNICODEMAP_ENABLE = no
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight.  Do not enable this with audio at the same time.
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend

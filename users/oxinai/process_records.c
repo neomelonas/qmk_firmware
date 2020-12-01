@@ -19,8 +19,10 @@ void persistant_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-
-
+__attribute__ ((weak))
+uint32_t layer_state_set_keymap(uint32_t state) {
+    return state;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -111,6 +113,11 @@ uint32_t layer_state_set_user(uint32_t state)
       send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), MACRO_TIMER);
     }
     break;
+#if defined(WPM_ENABLE)
+  case KC_WPM:
+    get_current_wpm();
+    break;
+#endif
 #ifdef UNICODE_ENABLE
   case UC_FLIP: // (ノಠ痊ಠ)ノ彡┻━┻
     if (record->event.pressed) {

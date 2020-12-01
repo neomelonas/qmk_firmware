@@ -45,7 +45,6 @@
 // #define RGB_DI_PIN E2
 // #ifdef RGB_DI_PIN
 //   #define RGBLED_NUM 16
-//   #define RGBLIGHT_HUE_STEP 32
 //   #define RGBLIGHT_SAT_STEP 32
 //   #define RGBLIGHT_VAL_STEP 32
 //   #define RGBLIGHT_LIMIT_VAL 255 /* The maximum brightness level */
