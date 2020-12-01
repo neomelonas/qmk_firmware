@@ -1,4 +1,8 @@
 # Build Options
+#   change to "no" to disable the options, or define them in the Makefile in 
+#   the appropriate keymap folder that will get included automatically
+#
+#BOOTLOADER = qmk-dfu
 BOOTLOADER = halfkay
 BOOTMAGIC_ENABLE = yes      # Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = yes       # Mouse keys(+4700)
@@ -12,10 +16,13 @@ AUDIO_ENABLE = no           # Audio output on port C6
 UNICODE_ENABLE = yes        # Unicode
 UNICODEMAP_ENABLE = no
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
+RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight. 
 PS2_USE_USART = yes
 API_SYSEX_ENABLE = no
 TAP_DANCE_ENABLE = no
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
+
+LEADER_ENABLE = yes
+GIT_ENABLE = yes
 
