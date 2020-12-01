@@ -1,0 +1,2 @@
+SLEEP_LED_ENABLE = no
+WPM_ENABLE = yes

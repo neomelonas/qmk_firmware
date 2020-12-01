@@ -17,3 +17,4 @@
 #pragma once
 
 #define ACTUATION_DEPTH_ADJUSTMENT -1
+#define LED_CAPS_LOCK_PIN B6
