@@ -1,2 +1,4 @@
+COMMAND_ENABLE = yes
+
 LEADER_ENABLE = yes
 GIT_ENABLE = yes
