@@ -9,5 +9,6 @@
 #define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 #endif
 #ifdef LEADER_ENABLE
-#define LEADER_TIMEOUT 300
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 250
 #endif

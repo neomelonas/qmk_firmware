@@ -91,7 +91,6 @@ void eeconfig_init_user(void) {
     eeprom_update_byte(EECONFIG_UNICODEMODE, OXINAI_UNICODE_MODE);
   #endif
 }
-#ifdef LEADER_ENABLE
 LEADER_EXTERNS();
 // No global matrix scan code, so just run keymap's matrix
 // scan function
@@ -104,18 +103,9 @@ void matrix_scan_user(void) {
   LEADER_DICTIONARY() {
     leading = false;
     leader_end();
-#ifndef GIT_ENABLE
     // Mac Lock (Leader -> q)
     SEQ_ONE_KEY(KC_Q) {
       SEND_STRING(SS_LCTRL(SS_LGUI("q")));
-    }
-    // Win Lock (Leader -> l)
-    SEQ_ONE_KEY(KC_L) {
-      SEND_STRING(SS_LGUI("l"));
-    }
-
-    SEQ_THREE_KEYS(KC_L, KC_I, KC_O) {
-        SEND_STRING("test");
     }
 
     SEQ_ONE_KEY(KC_V) {
@@ -123,8 +113,6 @@ void matrix_scan_user(void) {
       tap(KC_ENTER);
       SEND_STRING ("Built at: " QMK_BUILDDATE);
     }
-#endif
-#ifdef GIT_ENABLE
     // git add
     SEQ_ONE_KEY(KC_A){
       SEND_STRING("git add ");
@@ -174,7 +162,7 @@ void matrix_scan_user(void) {
       SEND_STRING("git pull ");
     }
     // git push
-    SEQ_TWO_KEY(KC_P, KC_S){
+    SEQ_TWO_KEYS(KC_P, KC_S){
       SEND_STRING("git push ");
     }
     // git rebase
@@ -193,7 +181,6 @@ void matrix_scan_user(void) {
     SEQ_ONE_KEY(KC_T){
       SEND_STRING("git tag ");
     }
-#endif
   }
 #ifndef NO_SECRETS
   matrix_scan_secrets();
@@ -201,4 +188,3 @@ void matrix_scan_user(void) {
 
   matrix_scan_keymap();
 }
-#endif
