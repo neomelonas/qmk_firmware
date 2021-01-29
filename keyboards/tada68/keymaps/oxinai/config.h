@@ -11,4 +11,7 @@
 #define QMK_ESC_OUTPUT F0 // usually COL
 #define QMK_ESC_INPUT D0 // usually ROW
 #define QMK_LED B6
-
+#ifdef LEADER_ENABLE
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 250
+#endif
