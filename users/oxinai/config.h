@@ -13,6 +13,5 @@
 #define QMK_KEYS_PER_SCAN 4
 #endif // !QMK_KEYS_PER_SCAN
 
-
 #define MACRO_TIMER 5
 #define USB_MAX_POWER_CONSUMPTION 100

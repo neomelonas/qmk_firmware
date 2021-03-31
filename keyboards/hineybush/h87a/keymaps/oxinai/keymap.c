@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNC] = LAYOUT_all(
     _______, _______, _______, _______, _______, RGB_TOG, RGB_MOD, RGB_HUD, RGB_HUI,          RGB_SAD, RGB_SAI, RGB_VAD, RGB_VAI,                        BL_TOGG, BL_DEC,  BL_INC,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL, KC_DEL,                 _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL, KC_DEL,                 _______, _______, KC_CAPS,
     _______, KC_PGUP, KC_UP,   KC_PGDN, KC_HOME, KC_INS,  _______, _______, _______, _______, _______, KC_WPM,  VRSN,    RESET,                          _______, _______, _______,
     _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_DEL,  _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, KC_MPLY, KC_MPRV, KC_MNXT, BL_DEC,  BL_TOGG, BL_INC,  KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, _______,                                 _______,
