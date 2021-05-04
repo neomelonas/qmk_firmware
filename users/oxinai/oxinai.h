@@ -4,6 +4,13 @@
 #include "eeprom.h"
 #include "eeconfig.h"
 #include "process_records.h"
+#ifdef CONSOLE_ENABLE
+#include "print.h"
+#endif
+#ifdef QMKRC_ENABLE
+#include "qmk_rc.h"
+#endif
+
 
 #if defined(UNICODEMAP_ENABLE) || defined(UNICODE_ENABLE)
   #include "send_unicode.h"

@@ -15,6 +15,7 @@
  */
 #include QMK_KEYBOARD_H
 #include "oxinai.h"
+#include "qmk_rc.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -35,3 +36,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______,                    _______,                                    _______, _______, _______, _______,                        _______, _______, _______),
 
 };
+
+#ifdef RAW_ENABLE
+#define QMK_RC_BUFFER_MAX 64
+uint8_t qmk_rc_buffer[QMK_RC_BUFFER_MAX] = {};
+
+void raw_hid_receive(uint8_t *data, uint8_t length) {
+  qmk_rc_receive(qmk_rc_buffer, QMK_RC_BUFFER_MAX, data, length);
+}
+#endif

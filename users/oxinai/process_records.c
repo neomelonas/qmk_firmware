@@ -28,11 +28,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // If console is enabled, it will print the matrix position and status of each key pressed
 #ifdef KEYLOGGER_ENABLE
-  #if defined(KEYBOARD_ergodox_ez) || defined(KEYBOARD_iris_rev2)
-    xprintf("KL: col: %u, row: %u, pressed: %u\n", record->event.key.row, record->event.key.col, record->event.pressed);
-  #else
-    xprintf("KL: col: %u, row: %u, pressed: %u\n", record->event.key.col, record->event.key.row, record->event.pressed);
-  #endif
+    uprintf("0x%04X,%u,%u,%u\n", keycode, record->event.key.row, record->event.key.col, get_highest_layer(layer_state));
 #endif //KEYLOGGER_ENABLE
 
 
@@ -169,3 +165,4 @@ uint32_t layer_state_set_user(uint32_t state)
   return process_record_keymap(keycode, record) &&
   process_record_secrets(keycode, record);
 }
+
