@@ -43,6 +43,7 @@ enum userspace_custom_keycodes {
   DbZ,
   KC_WPM,            // WPM Printer
   UNO,
+  MS_JIGL,
 //  DYNAMIC_MACRO_RANGE,// DYN MACROS
   NEW_SAFE_RANGE     //use "NEWPLACEHOLDER for keymap specific codes
 };

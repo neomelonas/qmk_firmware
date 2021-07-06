@@ -161,6 +161,21 @@ uint32_t layer_state_set_user(uint32_t state)
       SEND_STRING(SS_TAP(X_KP_0)SS_TAP(X_KP_0));
     }
     break;
+  case MS_JIGL:  // mouse jiggler
+    if (record->event.pressed) {
+        static bool do_jiggle;
+        static uint16_t key_timer;
+        key_timer = timer_read();
+
+        do_jiggle ^= 1;
+        if (do_jiggle) {
+            tap_code(KC_MS_LEFT);
+            if (timer_elapsed(key_timer) > (3000)) {
+                tap_code(KC_MS_RIGHT);
+            }
+        }
+    }
+    break;
   }
   return process_record_keymap(keycode, record) &&
   process_record_secrets(keycode, record);

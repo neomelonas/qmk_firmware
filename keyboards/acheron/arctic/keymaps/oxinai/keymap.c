@@ -26,8 +26,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC ,                                KC_RALT, KC_RGUI, KC_RCTL),
    [_FUNC] = LAYOUT_60_tsangan_hhkb(
         KC_GRV,  KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11, KC_F12, KC_DEL,   KC_DEL,
-        KC_TRNS, KC_PGUP, KC_UP  , KC_PGDN, KC_HOME,KC_INS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  RESET,
+        KC_TRNS, KC_PGUP, KC_UP  , KC_PGDN, KC_HOME,KC_INS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MS_JIGL, KC_CAPS,  RESET,
         KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, KC_DEL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_MPLY, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS, FN_FUNC,
-        KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                              KC_TRNS, KC_TRNS,   KC_TRNS),
+        KC_TRNS, KC_MPLY, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS, KC_UP, FN_FUNC,
+        KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                              KC_LEFT, KC_DOWN,   KC_RGHT),
 };
